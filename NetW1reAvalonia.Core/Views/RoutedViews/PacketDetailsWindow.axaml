@@ -1,0 +1,21 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:NetW1reAvalonia.Core.ViewModels.RoutedViewModels"
+        xmlns:views="using:NetW1reAvalonia.Core.Views.RoutedViews"
+        mc:Ignorable="d"
+        x:Class="NetW1reAvalonia.Core.Views.RoutedViews.PacketDetailsWindow"
+        Title="Packet Details"
+        Width="800" Height="600"
+        MinWidth="600" MinHeight="400"
+        Background="#0F172A"
+        WindowStartupLocation="CenterOwner">
+
+    <Design.DataContext>
+        <vm:PacketDetailsViewModel />
+    </Design.DataContext>
+
+    <views:PacketDetailsView />
+
+</Window>

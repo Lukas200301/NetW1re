@@ -1,0 +1,137 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:viewModels="clr-namespace:NetW1reAvalonia.Core.ViewModels.RoutedViewModels"
+			 xmlns:cmpts="using:NetW1reAvalonia.Core.Views.Components"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:Class="NetW1reAvalonia.Core.Views.Components.ListControls">
+
+	<Design.DataContext>
+		<viewModels:HomeViewModel />
+	</Design.DataContext>	<UserControl.Styles>
+		<Style Selector="cmpts|GenericIconButton">
+			<Setter Property="Background">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+						<GradientStop Offset="0" Color="#2A3142"/>
+						<GradientStop Offset="0.5" Color="#303951"/>
+						<GradientStop Offset="1" Color="#243142"/>
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="BorderBrush" Value="#4DABF7"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="CornerRadius" Value="8"/>
+			<Setter Property="Margin" Value="4"/>
+			<Setter Property="Padding" Value="12,8"/>
+		</Style>
+		<Style Selector="cmpts|GenericIconButton:pointerover">
+			<Setter Property="Background">
+				<Setter.Value>
+					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+						<GradientStop Offset="0" Color="#303951"/>
+						<GradientStop Offset="0.5" Color="#3A4661"/>
+						<GradientStop Offset="1" Color="#2A3142"/>
+					</LinearGradientBrush>
+				</Setter.Value>
+			</Setter>
+			<Setter Property="BorderBrush" Value="#74C0FC"/>
+		</Style>
+		<Style Selector="CheckBox">
+			<Setter Property="Foreground" Value="#FFFFFF"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="Margin" Value="8,0"/>
+			<Setter Property="Padding" Value="8,4"/>
+		</Style>
+		<Style Selector="CheckBox /template/ Border#NormalRectangle">
+			<Setter Property="Background" Value="#2A3142"/>
+			<Setter Property="BorderBrush" Value="#4DABF7"/>
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="CornerRadius" Value="6"/>
+		</Style>
+		<Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
+			<Setter Property="Background" Value="#4DABF7"/>
+			<Setter Property="BorderBrush" Value="#74C0FC"/>
+		</Style>
+		<Style Selector="CheckBox:pointerover /template/ Border#NormalRectangle">
+			<Setter Property="BorderBrush" Value="#74C0FC"/>
+			<Setter Property="Background" Value="#303951"/>
+		</Style>
+		<Style Selector="CheckBox:checked:pointerover /template/ Border#NormalRectangle">
+			<Setter Property="Background" Value="#74C0FC"/>
+		</Style>
+	</UserControl.Styles>	<Border Classes="control-group" Padding="20" BorderThickness="2" CornerRadius="12">
+		<Border.Background>
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+				<GradientStop Offset="0" Color="#1E2A3A"/>
+				<GradientStop Offset="1" Color="#243142"/>
+			</LinearGradientBrush>
+		</Border.Background>
+		<Border.BorderBrush>
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+				<GradientStop Offset="0" Color="#4DABF7"/>
+				<GradientStop Offset="0.5" Color="#74C0FC"/>
+				<GradientStop Offset="1" Color="#4DABF7"/>
+			</LinearGradientBrush>
+		</Border.BorderBrush>		<Border.Effect>
+			<DropShadowEffect Color="#40000000" BlurRadius="12" OffsetX="0" OffsetY="4"/>
+		</Border.Effect><Grid ColumnDefinitions="*,*" RowDefinitions="Auto">
+			<StackPanel Grid.Column="0" Orientation="Horizontal"
+						Spacing="20"
+						HorizontalAlignment="Left"
+						VerticalAlignment="Center">
+				<cmpts:GenericIconButton Name="Scan"
+				   Icon="Assets/NavIcons/scan.png"
+				   Text="Scan"
+				   Command="{Binding Scan}"
+				   IsEnabled="{Binding ScanEnabled}">
+					<ToolTip.Tip>
+						<StackPanel>
+							<TextBlock Classes="h1">Scan Network</TextBlock>
+							<TextBlock Classes="p">
+								Scans for active devices on the network. You only need to press this once, then the app will continuously scan for active devices.
+							</TextBlock>
+						</StackPanel>
+					</ToolTip.Tip>
+				</cmpts:GenericIconButton>
+				<cmpts:GenericIconButton Name="Refresh"
+					Icon="Assets/NavIcons/refresh.png"
+					Text="Refresh"
+					Command="{Binding Refresh}">
+					<ToolTip.Tip>
+						<StackPanel>
+							<TextBlock Classes="h1">Refresh Devices</TextBlock>
+							<TextBlock Classes="p">
+								Refreshes the list of devices by manually initiating a scan. You can use this when you want devices to be discovered faster or when not all devices are discovered on the initial scan.&#10;(The app scans the network continuously, so you can always just wait a few seconds for all devices to be discovered)
+							</TextBlock>
+						</StackPanel>
+					</ToolTip.Tip>
+				</cmpts:GenericIconButton>
+			</StackPanel>
+
+			<StackPanel Orientation="Horizontal" Spacing="24"
+						Grid.Column="1"
+						HorizontalAlignment="Right"
+						VerticalAlignment="Center">
+				<CheckBox
+					Content="Block All"
+					Command="{Binding BlockAll}"
+					CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+					IsChecked="{Binding AllBlocked, Mode=TwoWay}"
+					ToolTip.Tip="Blocks all devices and future detections"/>
+				<CheckBox
+					Content="Redirect All"
+					Command="{Binding RedirectAll}"
+					CommandParameter="{Binding IsChecked, RelativeSource={RelativeSource Self}}"
+					IsChecked="{Binding AllRedirected, Mode=TwoWay}"
+					ToolTip.Tip="Redirects all devices and future detections"/>
+				<cmpts:StatsBox HorizontalAlignment="Right"/>
+			</StackPanel>
+		</Grid>
+	</Border>
+</UserControl>
+
+
+

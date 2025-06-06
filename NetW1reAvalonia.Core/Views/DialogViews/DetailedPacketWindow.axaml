@@ -1,0 +1,577 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:NetW1reAvalonia.Core.ViewModels.DialogViewModels"
+        mc:Ignorable="d"
+        x:Class="NetW1reAvalonia.Core.Views.DialogViews.DetailedPacketWindow"
+        Title="{Binding WindowTitle}"
+        Width="1000" Height="800" MinWidth="800" MinHeight="600"
+        WindowStartupLocation="CenterOwner"
+        Icon="/Assets/netw1re-logo.ico">
+
+    <Design.DataContext>
+        <vm:DetailedPacketViewModel />
+    </Design.DataContext>
+
+    <Window.Styles>
+        <Style Selector="TextBlock.SectionHeader">
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Foreground" Value="#4DABF7"/>
+            <Setter Property="Margin" Value="0,10,0,5"/>
+        </Style>
+        <Style Selector="TextBlock.Label">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0,2"/>
+        </Style>
+        <Style Selector="TextBlock.Value">
+            <Setter Property="Foreground" Value="#D1D5DB"/>
+            <Setter Property="FontFamily" Value="Consolas"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0,2"/>
+        </Style>
+        <Style Selector="Border.Section">
+            <Setter Property="Background" Value="#1E293B"/>
+            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="6"/>
+            <Setter Property="Padding" Value="15"/>
+            <Setter Property="Margin" Value="0,5"/>
+        </Style>
+        <Style Selector="Button.ActionButton">
+            <Setter Property="Background" Value="#374151"/>
+            <Setter Property="BorderBrush" Value="#4B5563"/>
+            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style Selector="Button.ActionButton:pointerover">
+            <Setter Property="Background" Value="#4B5563"/>
+        </Style>
+        <Style Selector="Button.PrimaryButton">
+            <Setter Property="Background" Value="#3B82F6"/>
+            <Setter Property="BorderBrush" Value="#2563EB"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+        <Style Selector="Button.PrimaryButton:pointerover">
+            <Setter Property="Background" Value="#2563EB"/>
+        </Style>
+    </Window.Styles>
+
+    <Grid Background="#0F172A">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="#1E293B" BorderBrush="#334155" BorderThickness="0,0,0,1" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                    <TextBlock Text="📦" FontSize="24" VerticalAlignment="Center"/>
+                    <TextBlock Text="Detailed Packet Analysis" FontSize="20" FontWeight="Bold" 
+                               Foreground="#E2E8F0" VerticalAlignment="Center"/>
+                    <Border Background="#1E40AF" CornerRadius="4" Padding="8,4" 
+                            IsVisible="{Binding PacketInfo, Converter={x:Static ObjectConverters.IsNotNull}}">
+                        <TextBlock Text="{Binding PacketInfo.Protocol}" FontSize="12" 
+                                   Foreground="#4DABF7" FontWeight="SemiBold"/>
+                    </Border>
+                </StackPanel>
+
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10">
+                    <Border Background="#059669" CornerRadius="4" Padding="6,3"
+                            IsVisible="{Binding IsResolvingHostnames}">
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="🔄" FontSize="10" VerticalAlignment="Center"/>
+                            <TextBlock Text="Resolving..." FontSize="10" Foreground="White" FontWeight="SemiBold"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <Button Command="{Binding RefreshHostnamesCommand}" Classes="ActionButton" ToolTip.Tip="Refresh Hostnames">
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="🔄" FontSize="12"/>
+                            <TextBlock Text="Refresh DNS"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" Padding="20" VerticalScrollBarVisibility="Auto">
+            <StackPanel Spacing="15">
+
+                <Border Classes="Section">
+                    <StackPanel>
+                        <TextBlock Text="📋 Basic Information" Classes="SectionHeader"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Timestamp:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PacketInfo.Timestamp, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss.fff}'}" Classes="Value"/>
+                            
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="Protocol:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PacketInfo.Protocol}" Classes="Value"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Total Length:" Classes="Label"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PacketInfo.Length, StringFormat='{}{0} bytes'}" Classes="Value"/>
+                            
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="Direction:" Classes="Label"/>
+                            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding PacketInfo.Direction}" Classes="Value"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Flow Key:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.FlowKey, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PacketInfo.FlowKey}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.FlowKey, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Info:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.Info, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding PacketInfo.Info}" Classes="Value" TextWrapping="Wrap"
+                                       IsVisible="{Binding PacketInfo.Info, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section" IsVisible="{Binding HasEthernetInfo}">
+                    <StackPanel>
+                        <TextBlock Text="🔌 Ethernet Layer" Classes="SectionHeader"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Source MAC:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PacketInfo.SourceMAC}" Classes="Value"/>
+                            
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="Dest MAC:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PacketInfo.DestinationMAC}" Classes="Value"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Ethernet Type:" Classes="Label" 
+                                       IsVisible="{Binding HasEthernetType}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PacketInfo.EthernetType}" Classes="Value"
+                                       IsVisible="{Binding HasEthernetType}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section" IsVisible="{Binding HasIpInfo}">
+                    <StackPanel>
+                        <TextBlock Text="🌐 Network Layer (IP)" Classes="SectionHeader"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Source IP:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PacketInfo.SourceIP}" Classes="Value"/>
+                            
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="Dest IP:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PacketInfo.DestinationIP}" Classes="Value"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Source Host:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.SourceHostname, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PacketInfo.SourceHostname}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.SourceHostname, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="Dest Host:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.DestinationHostname, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding PacketInfo.DestinationHostname}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.DestinationHostname, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="IP Version:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.IpVersion, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PacketInfo.IpVersion}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.IpVersion, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            
+                            <TextBlock Grid.Row="2" Grid.Column="2" Text="TTL:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.Ttl, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding PacketInfo.Ttl}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.Ttl, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Header Length:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.IpHeaderLength, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding PacketInfo.IpHeaderLength}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.IpHeaderLength, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="2" Text="Checksum:" Classes="Label" 
+                                       IsVisible="{Binding HasIpChecksum}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding PacketInfo.IpChecksum}" Classes="Value"
+                                       IsVisible="{Binding HasIpChecksum}"/>
+
+                            <TextBlock Grid.Row="4" Grid.Column="0" Text="Identification:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.Identification, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding PacketInfo.Identification}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.Identification, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+
+                            <TextBlock Grid.Row="4" Grid.Column="2" Text="Fragment Offset:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.FragmentOffset, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Grid.Row="4" Grid.Column="3" Text="{Binding PacketInfo.FragmentOffset}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.FragmentOffset, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section" IsVisible="{Binding IsTcp}">
+                    <StackPanel>
+                        <TextBlock Text="🚀 Transport Layer (TCP)" Classes="SectionHeader"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Source Port:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PacketInfo.SourcePort}" Classes="Value"/>
+                            
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="Dest Port:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PacketInfo.DestinationPort}" Classes="Value"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Sequence Num:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.TcpSequenceNumber, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PacketInfo.TcpSequenceNumber}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.TcpSequenceNumber, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="Ack Number:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.TcpAcknowledgmentNumber, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding PacketInfo.TcpAcknowledgmentNumber}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.TcpAcknowledgmentNumber, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="TCP Flags:" Classes="Label" 
+                                       IsVisible="{Binding HasTcpFlags}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PacketInfo.TcpFlags}" Classes="Value"
+                                       IsVisible="{Binding HasTcpFlags}"/>
+                            
+                            <TextBlock Grid.Row="2" Grid.Column="2" Text="Window Size:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.TcpWindowSize, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding PacketInfo.TcpWindowSize}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.TcpWindowSize, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Header Length:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.TcpHeaderLength, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding PacketInfo.TcpHeaderLength}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.TcpHeaderLength, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="2" Text="Checksum:" Classes="Label" 
+                                       IsVisible="{Binding HasTcpChecksum}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="3" Text="{Binding PacketInfo.TcpChecksum}" Classes="Value"
+                                       IsVisible="{Binding HasTcpChecksum}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section" IsVisible="{Binding IsUdp}">
+                    <StackPanel>
+                        <TextBlock Text="🚀 Transport Layer (UDP)" Classes="SectionHeader"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Source Port:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PacketInfo.SourcePort}" Classes="Value"/>
+                            
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="Dest Port:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PacketInfo.DestinationPort}" Classes="Value"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="UDP Length:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.UdpLength, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PacketInfo.UdpLength}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.UdpLength, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="Checksum:" Classes="Label" 
+                                       IsVisible="{Binding HasUdpChecksum}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding PacketInfo.UdpChecksum}" Classes="Value"
+                                       IsVisible="{Binding HasUdpChecksum}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section" IsVisible="{Binding IsIcmp}">
+                    <StackPanel>
+                        <TextBlock Text="🏓 ICMP Protocol" Classes="SectionHeader"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="ICMP Type:" Classes="Label" 
+                                       IsVisible="{Binding HasIcmpType}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PacketInfo.IcmpType}" Classes="Value"
+                                       IsVisible="{Binding HasIcmpType}"/>
+                            
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="ICMP Code:" Classes="Label" 
+                                       IsVisible="{Binding HasIcmpCode}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PacketInfo.IcmpCode}" Classes="Value"
+                                       IsVisible="{Binding HasIcmpCode}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section" IsVisible="{Binding IsArp}">
+                    <StackPanel>
+                        <TextBlock Text="🔗 ARP Protocol" Classes="SectionHeader"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Operation:" Classes="Label"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PacketInfo.ArpOperation}" Classes="Value"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Sender IP:" Classes="Label"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PacketInfo.ArpSenderIp}" Classes="Value"/>
+                            
+                            <TextBlock Grid.Row="1" Grid.Column="2" Text="Target IP:" Classes="Label"/>
+                            <TextBlock Grid.Row="1" Grid.Column="3" Text="{Binding PacketInfo.ArpTargetIp}" Classes="Value"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Sender MAC:" Classes="Label"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PacketInfo.ArpSenderMac}" Classes="Value"/>
+                            
+                            <TextBlock Grid.Row="2" Grid.Column="2" Text="Target MAC:" Classes="Label"/>
+                            <TextBlock Grid.Row="2" Grid.Column="3" Text="{Binding PacketInfo.ArpTargetMac}" Classes="Value"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section" IsVisible="{Binding HasHttpData}">
+                    <StackPanel>
+                        <TextBlock Text="🌍 Application Layer (HTTP)" Classes="SectionHeader"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="HTTP Method:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.HttpMethod, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PacketInfo.HttpMethod}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.HttpMethod, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="HTTP Host:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.HttpHost, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding PacketInfo.HttpHost}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.HttpHost, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+                            <TextBlock Grid.Row="2" Grid.Column="0" Text="User Agent:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.HttpUserAgent, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding PacketInfo.HttpUserAgent}" Classes="Value" TextWrapping="Wrap"
+                                       IsVisible="{Binding PacketInfo.HttpUserAgent, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+                            <TextBlock Grid.Row="3" Grid.Column="0" Text="Content Type:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.HttpContentType, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding PacketInfo.HttpContentType}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.HttpContentType, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section" IsVisible="{Binding HasDnsData}">
+                    <StackPanel>
+                        <TextBlock Text="🌐 DNS Information" Classes="SectionHeader"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="DNS Query:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.DnsQuery, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PacketInfo.DnsQuery}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.DnsQuery, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="Query Type:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.DnsQueryType, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PacketInfo.DnsQueryType}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.DnsQueryType, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+                            <TextBlock Grid.Row="1" Grid.Column="0" Text="DNS Response:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.DnsResponse, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding PacketInfo.DnsResponse}" Classes="Value" TextWrapping="Wrap"
+                                       IsVisible="{Binding PacketInfo.DnsResponse, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section" IsVisible="{Binding HasTlsData}">
+                    <StackPanel>
+                        <TextBlock Text="🔒 TLS Information" Classes="SectionHeader"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Grid.Row="0" Grid.Column="0" Text="TLS Version:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.TlsVersion, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PacketInfo.TlsVersion}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.TlsVersion, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+
+                            <TextBlock Grid.Row="0" Grid.Column="2" Text="Server Name:" Classes="Label" 
+                                       IsVisible="{Binding PacketInfo.TlsSni, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="3" Text="{Binding PacketInfo.TlsSni}" Classes="Value"
+                                       IsVisible="{Binding PacketInfo.TlsSni, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section" IsVisible="{Binding HasPayloadText}">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="📦 Payload Data" Classes="SectionHeader"/>
+                            <TextBlock Text="{Binding PayloadSizeText}" Foreground="#9CA3AF" FontSize="12" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <TextBox Text="{Binding PacketInfo.PayloadText}" IsReadOnly="True" 
+                                 Height="200" FontFamily="Consolas" FontSize="11"
+                                 Background="#111827" Foreground="#E5E7EB" BorderBrush="#374151"
+                                 AcceptsReturn="True" TextWrapping="Wrap"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Classes="Section">
+                    <StackPanel>
+                        <StackPanel Orientation="Horizontal" Spacing="10">
+                            <TextBlock Text="🔢 Hex Dump" Classes="SectionHeader"/>
+                            <TextBlock Text="{Binding RawDataSizeText}" Foreground="#9CA3AF" FontSize="12" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <TextBox Text="{Binding PacketInfo.HexDump}" IsReadOnly="True" 
+                                 Height="300" FontFamily="Consolas" FontSize="10"
+                                 Background="#111827" Foreground="#E5E7EB" BorderBrush="#374151"
+                                 AcceptsReturn="True" TextWrapping="NoWrap"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+                    </StackPanel>
+                </Border>
+
+            </StackPanel>
+        </ScrollViewer>
+
+        <Border Grid.Row="2" Background="#1E293B" BorderBrush="#334155" BorderThickness="0,1,0,0" Padding="20">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
+                    <Button Command="{Binding CopyAllDetailsCommand}" Classes="ActionButton" ToolTip.Tip="Copy All Details">
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="📋" FontSize="12"/>
+                            <TextBlock Text="Copy All"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button Command="{Binding CopyPayloadCommand}" Classes="ActionButton" ToolTip.Tip="Copy Payload"
+                            IsVisible="{Binding HasPayloadText}">
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="📄" FontSize="12"/>
+                            <TextBlock Text="Copy Payload"/>
+                        </StackPanel>
+                    </Button>
+                    
+                    <Button Command="{Binding CopyHexDumpCommand}" Classes="ActionButton" ToolTip.Tip="Copy Hex Dump">
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="🔢" FontSize="12"/>
+                            <TextBlock Text="Copy Hex"/>
+                        </StackPanel>
+                    </Button>
+
+                    <Button Command="{Binding SaveRawDataCommand}" Classes="ActionButton" ToolTip.Tip="Save Raw Data">
+                        <StackPanel Orientation="Horizontal" Spacing="5">
+                            <TextBlock Text="💾" FontSize="12"/>
+                            <TextBlock Text="Save Raw"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+
+                <Button Grid.Column="1" Command="{Binding CloseCommand}" Classes="PrimaryButton">
+                    <StackPanel Orientation="Horizontal" Spacing="5">
+                        <TextBlock Text="✕" FontSize="12"/>
+                        <TextBlock Text="Close"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

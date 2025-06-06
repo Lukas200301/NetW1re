@@ -1,0 +1,65 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"        xmlns:vm="using:NetW1reAvalonia.Core.ViewModels"
+        xmlns:converters="using:NetW1reAvalonia.Core.Converters"
+        mc:Ignorable="d"
+        x:Class="NetW1reAvalonia.Core.Views.StatusMessageView">
+
+    <Design.DataContext>
+        <vm:StatusMessageViewModel />
+    </Design.DataContext>    <Window.Styles>
+        <StyleInclude Source="/Assets/GlobalStyles/WindowStyles.axaml" />
+        <Style Selector="Window">
+			<Setter Property="CanResize" Value="False" />
+            <Setter Property="ShowInTaskbar" Value="False" />
+            <Setter Property="ExtendClientAreaChromeHints" Value="NoChrome" />
+            <Setter Property="Width" Value="720" />
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="Padding" Value="24,10" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="#136999" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#1a7bb3" />
+        </Style>
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="LineHeight" Value="22" />
+        </Style>
+    </Window.Styles>
+
+    <Window.Resources>
+        <converters:StatusMessageTypeToImageConverter x:Key="StatusMessageTypeToImageConv" />
+    </Window.Resources>    <Border Padding="32"
+            Background="#10FFFFFF"
+            CornerRadius="8"
+            Margin="8">
+        <Grid RowDefinitions="auto,auto" ColumnDefinitions="auto,*" Margin="0,20,0,0"
+              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Image Grid.Row="0" Grid.Column="0"
+                   Source="{Binding StatusMessage.MessageType,
+                Converter={StaticResource StatusMessageTypeToImageConv}}"
+                   Width="48" Height="48"
+                   VerticalAlignment="Top" />
+            <TextBlock Grid.Row="0" Grid.Column="1"
+                       VerticalAlignment="Center"
+                       Margin="24,0,0,0"
+                       TextWrapping="Wrap"
+                       Text="{Binding StatusMessage.Message}" />
+            <Button Grid.Row="1" Grid.Column="1"
+                    Margin="0,24,0,0"
+                    HorizontalAlignment="Right"
+                    Content="Close"
+                    Command="{Binding Close}" />
+        </Grid>
+    </Border>
+</Window>
+
+
+

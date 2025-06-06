@@ -1,0 +1,86 @@
+<Styles xmlns="https://github.com/avaloniaui"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:cmpts="using:NetW1reAvalonia.Core.Views.Components"
+		xmlns:convos="using:NetW1reAvalonia.Core.Converters">
+	<Design.PreviewWith>
+		<cmpts:GenericIconButton   Name="Scan"
+					   Icon="Assets/NavIcons/scan.png"
+					   Text="Scan"
+					   Background="{Binding Theme.NavElementBackground}">
+		</cmpts:GenericIconButton>
+	</Design.PreviewWith>
+	<Style Selector="cmpts|GenericIconButton">
+		<Setter Property="Template">
+			<ControlTemplate>				<Border Classes="container"
+						HorizontalAlignment="Stretch"
+						CornerRadius="10"
+						Padding="0"
+						BorderBrush="#3D4D5C"
+						BorderThickness="1">					<Border.Background>
+						<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+							<GradientStop Offset="0" Color="#4A5568"/>
+							<GradientStop Offset="0.5" Color="#2D3748"/>
+							<GradientStop Offset="1" Color="#1A202C"/>
+						</LinearGradientBrush>
+					</Border.Background>
+					<Border.Effect>
+						<DropShadowEffect BlurRadius="8" Color="#000000" Opacity="0.3" OffsetX="0" OffsetY="2"/>
+					</Border.Effect><Border.Transitions>
+						<Transitions>
+							<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+						</Transitions>
+					</Border.Transitions>
+					<Button CornerRadius="10"
+							Background="Transparent"
+							Command="{TemplateBinding Command}"
+							CommandParameter="{TemplateBinding CommandParameter}"
+							HorizontalAlignment="Stretch"
+							Padding="16,12">
+						<Button.Styles>
+							<Style Selector="Button:pointerover /template/ ContentPresenter">								<Setter Property="Background">
+									<Setter.Value>
+										<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+											<GradientStop Offset="0" Color="#3B82F6"/>
+											<GradientStop Offset="0.5" Color="#2563EB"/>
+											<GradientStop Offset="1" Color="#1D4ED8"/>
+										</LinearGradientBrush>
+									</Setter.Value>
+								</Setter>
+								<Setter Property="RenderTransform" Value="scale(1.05)" />
+							</Style>
+							<Style Selector="Button:pressed /template/ ContentPresenter">
+								<Setter Property="RenderTransform" Value="scale(0.98)" />								<Setter Property="Background">
+									<Setter.Value>
+										<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+											<GradientStop Offset="0" Color="#1E40AF"/>
+											<GradientStop Offset="1" Color="#1E3A8A"/>
+										</LinearGradientBrush>
+									</Setter.Value>
+								</Setter>
+							</Style>
+						</Button.Styles>
+						<StackPanel Orientation="Horizontal"
+									HorizontalAlignment="Center"
+									VerticalAlignment="Center">
+							<Image Classes="icon"
+								   Width="20"
+								   Height="20"
+								   Margin="0,0,10,0"
+								   VerticalAlignment="Center"
+								   Source="{TemplateBinding Icon, Converter={x:Static convos:ImageConverters.FromPath}}"/>
+							<TextBlock Classes="text"
+									   VerticalAlignment="Center"
+									   Text="{TemplateBinding Text}"
+									   Foreground="#FFFFFF"
+									   FontWeight="SemiBold"
+									   FontSize="14"/>
+						</StackPanel>
+					</Button>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+</Styles>
+
+
+

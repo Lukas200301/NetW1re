@@ -1,0 +1,66 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:components="clr-namespace:NetW1reAvalonia.Core.Views.Components"
+        xmlns:viewModels="clr-namespace:NetW1reAvalonia.Core.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="NetW1reAvalonia.Core.Views.SetNameView"
+        Title="Set Friendly Name">
+
+    <Design.DataContext>
+        <viewModels:SetNameViewModel />
+    </Design.DataContext>    <Window.Styles>
+        <StyleInclude Source="/Assets/GlobalStyles/WindowStyles.axaml" />
+        <Style Selector="Window">
+			<Setter Property="CanResize" Value="False" />
+            <Setter Property="Width" Value="520" />
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Padding" Value="12,10" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="#40FFFFFF" />
+            <Setter Property="Background" Value="#20FFFFFF" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style Selector="TextBox:focus">
+            <Setter Property="BorderBrush" Value="#136999" />
+            <Setter Property="Background" Value="#30FFFFFF" />
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="Padding" Value="80,12" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="#136999" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#1a7bb3" />
+        </Style>
+        <Style Selector="Label">
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,*">
+        <components:PageTitle Grid.Row="0" VerticalAlignment="Stretch" Text="{Binding $parent[Window].Title}" />        <Border Grid.Row="1" Padding="20">
+            <StackPanel Orientation="Vertical" Spacing="25">
+                <StackPanel Orientation="Vertical" Spacing="8">
+                    <Label Margin="0,0,0,4">Friendly Name</Label>
+                    <TextBox Watermark="Enter a friendly name for this device" Text="{Binding Name, Mode=TwoWay}" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                    <Button Command="{Binding Accept}">Set Name</Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
+
+
+

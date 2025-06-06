@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net9.0-windows10.0.17763.0</TargetFramework>
+    <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
+    <Nullable>enable</Nullable>
+    <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
+    <InformationalVersion>1.0.0</InformationalVersion>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+  <PropertyGroup>
+    <NoWarn>CA1416</NoWarn>
+    <NoWarn>IO0006</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Title>NetW1re</Title>
+    <ProductName>NetW1re</ProductName>
+    <Description>A network tool to control the bandwidth over your local network, it can block internet access form any selected device, or limit its speed using packet redirection, in addition, it can log web activity for the targeted device using a built in packet sniffer.</Description>
+    <Authors>Lukas</Authors>
+    <Copyright>Copyright © Lukas 2024</Copyright>
+    <PackageProjectUrl>https://github.com/lukas/NetW1re</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/lukas/NetW1re</RepositoryUrl>
+    <Product>NetW1re</Product>
+    <AssemblyName>NetW1re</AssemblyName>
+    <ApplicationIcon>netw1re-logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="netw1re-logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <TrimmerRootDescriptor Include="Roots.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <TrimmableAssembly Include="Avalonia.Themes.Fluent" />
+    <TrimmableAssembly Include="Avalonia.Themes.Default" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.0.5" />
+    <PackageReference Include="Avalonia.Desktop" Version="11.0.5" />
+    <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.5" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="11.0.5" />
+    <PackageReference Include="Splat.DependencyInjection.SourceGenerator" Version="1.1.93">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NetW1reAvalonia.Core\NetW1reAvalonia.Core.csproj" />
+  </ItemGroup>
+</Project>

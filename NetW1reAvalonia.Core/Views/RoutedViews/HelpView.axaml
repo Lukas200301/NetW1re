@@ -1,0 +1,172 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:NetW1reAvalonia.Core.ViewModels.RoutedViewModels"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:Class="NetW1reAvalonia.Core.Views.RoutedViews.HelpView">
+
+	<Design.DataContext>
+		<vm:HelpViewModel />
+	</Design.DataContext>	<UserControl.Styles>
+		<Style Selector="Border.rowStatus">
+			<Setter Property="Height" Value="16"/>
+			<Setter Property="Width" Value="16"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="CornerRadius" Value="8"/>
+		</Style>
+		<Style Selector="TextBlock.title">
+			<Setter Property="FontSize" Value="24"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="Foreground" Value="#136999"/>
+			<Setter Property="Margin" Value="0,0,0,20"/>
+		</Style>		<Style Selector="StackPanel.infoPanel">
+			<Setter Property="Orientation" Value="Horizontal"/>
+			<Setter Property="Spacing" Value="12"/>
+			<Setter Property="Margin" Value="0,8"/>
+		</Style>
+		<Style Selector="Border.infoPanelWrapper">
+			<Setter Property="Background" Value="#10FFFFFF"/>
+			<Setter Property="Padding" Value="16,12"/>
+			<Setter Property="CornerRadius" Value="8"/>
+		</Style>
+		<Style Selector="TextBlock.labelValue">
+			<Setter Property="FontSize" Value="16"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+		</Style>
+	</UserControl.Styles>	<Border Classes="wrapper">
+		<ScrollViewer VerticalScrollBarVisibility="Auto">
+			<StackPanel Spacing="24" Margin="0,0,20,0">
+				<StackPanel>
+					<TextBlock Text="Getting Started" Classes="title"/>
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="1. Network Scanning" FontWeight="Bold"/>
+							<TextBlock Text="Click the 'Scan' button to discover devices on your network. NetW1re will continuously monitor for new devices automatically." TextWrapping="Wrap"/>
+							
+							<TextBlock Classes="labelValue" Text="2. Device Management" FontWeight="Bold" Margin="0,12,0,0"/>
+							<TextBlock Text="Once devices are discovered, you can interact with them through the device list. Right-click on any device for additional options." TextWrapping="Wrap"/>
+							
+							<TextBlock Classes="labelValue" Text="3. Network Control" FontWeight="Bold" Margin="0,12,0,0"/>
+							<TextBlock Text="Use the action buttons to block, redirect, or limit devices. Changes take effect immediately." TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+				</StackPanel>
+
+				<StackPanel>
+					<TextBlock Text="Status Indicators" Classes="title"/>
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Classes="infoPanel">
+							<Border Classes="rowStatus indicator" Background="Red"></Border>
+							<TextBlock Classes="labelValue" Text="Blocked - Device cannot access the internet"/>
+						</StackPanel>
+					</Border>
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Classes="infoPanel">
+							<Border Classes="rowStatus indicator" Background="Yellow"></Border>
+							<TextBlock Classes="labelValue" Text="Redirected - Device traffic is being redirected"/>
+						</StackPanel>
+					</Border>
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Classes="infoPanel">
+							<Border Classes="rowStatus indicator" Background="Blue"></Border>
+							<TextBlock Classes="labelValue" Text="Limited - Device has bandwidth restrictions"/>
+						</StackPanel>
+					</Border>
+				</StackPanel>
+
+				<StackPanel>
+					<TextBlock Text="Key Features" Classes="title"/>
+					
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Device List Management" FontWeight="Bold"/>
+							<TextBlock Text="• Monitor all devices on your network in real-time&#10;• Set custom friendly names for easy identification&#10;• View device details including IP address, MAC address, and vendor&#10;• Apply bulk actions to multiple devices at once" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Network Control" FontWeight="Bold"/>
+							<TextBlock Text="• Block devices from accessing the internet&#10;• Redirect device traffic through custom routes&#10;• Set bandwidth limitations for specific devices&#10;• Apply rules automatically based on device criteria" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Packet Monitoring" FontWeight="Bold"/>
+							<TextBlock Text="• Monitor network traffic in real-time&#10;• Analyze packet details and protocols&#10;• Filter traffic by various criteria&#10;• Export packet data for analysis" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Automation Rules" FontWeight="Bold"/>
+							<TextBlock Text="• Create custom rules for automatic device management&#10;• Set conditions based on device properties&#10;• Define actions to be taken when conditions are met&#10;• Manage rule priority and execution order" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+				</StackPanel>
+
+				<StackPanel>
+					<TextBlock Text="Tips &amp; Best Practices" Classes="title"/>
+					
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Network Discovery" FontWeight="Bold"/>
+							<TextBlock Text="• Allow a few minutes for complete network discovery&#10;• Use 'Refresh' if devices are not appearing&#10;• Some devices may appear offline when in sleep mode&#10;• Router/gateway devices are automatically identified" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Device Management" FontWeight="Bold"/>
+							<TextBlock Text="• Assign friendly names to important devices for easy identification&#10;• Use rules for consistent device management&#10;• Test actions on individual devices before applying bulk changes&#10;• Monitor device status after applying restrictions" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Security Considerations" FontWeight="Bold"/>
+							<TextBlock Text="• Regularly review connected devices for security&#10;• Block unknown or suspicious devices immediately&#10;• Use packet monitoring to investigate unusual traffic&#10;• Keep device names updated for easy identification" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Performance Optimization" FontWeight="Bold"/>
+							<TextBlock Text="• Use bandwidth limiting instead of blocking for better control&#10;• Apply rules during off-peak hours when possible&#10;• Monitor network performance after making changes&#10;• Use bulk actions for efficiency when managing many devices" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+				</StackPanel>
+
+				<StackPanel>
+					<TextBlock Text="Troubleshooting" Classes="title"/>
+					
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Device Not Appearing" FontWeight="Bold"/>
+							<TextBlock Text="• Ensure the device is connected to the same network&#10;• Wait a few minutes for automatic discovery&#10;• Use the 'Refresh' button to force a new scan&#10;• Check if the device is in sleep/power-saving mode&#10;• Verify network adapter settings" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Actions Not Working" FontWeight="Bold"/>
+							<TextBlock Text="• Verify you have administrator privileges&#10;• Check network adapter compatibility&#10;• Ensure target device is still online&#10;• Restart NetW1re if issues persist&#10;• Review system firewall settings" TextWrapping="Wrap"/>
+						</StackPanel>
+					</Border>
+
+					<Border Classes="infoPanelWrapper">
+						<StackPanel Spacing="12">
+							<TextBlock Classes="labelValue" Text="Performance Issues" FontWeight="Bold"/>
+							<TextBlock Text="• Reduce scan frequency if CPU usage is high&#10;• Close packet monitoring when not needed&#10;• Limit the number of active rules&#10;• Check available system memory&#10;• Consider network adapter capabilities" TextWrapping="Wrap"/>
+						</StackPanel>					</Border>
+				</StackPanel>
+			</StackPanel>
+		</ScrollViewer>
+	</Border>
+</UserControl>
+
+
+

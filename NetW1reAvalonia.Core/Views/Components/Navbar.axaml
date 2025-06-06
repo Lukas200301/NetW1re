@@ -1,0 +1,135 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:viewModels="clr-namespace:NetW1reAvalonia.Core.ViewModels"
+			 xmlns:convos="using:NetW1reAvalonia.Core.Converters"
+			 xmlns:cmpts="using:NetW1reAvalonia.Core.Views.Components"
+			 mc:Ignorable="d"
+			 x:Class="NetW1reAvalonia.Core.Views.Components.Navbar"
+			 x:Name="navbar">
+
+	<Design.DataContext>
+		<viewModels:MainViewModel />
+	</Design.DataContext>
+
+	<UserControl.Resources>
+		<convos:StringEqualsConverter x:Key="stringEqualsConverter" />
+	</UserControl.Resources>
+	<Border Height="80" 
+			BorderThickness="0,0,0,2"
+			Padding="0">
+		<Border.Background>
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+				<GradientStop Offset="0" Color="#1E2A3A"/>
+				<GradientStop Offset="0.5" Color="#243142"/>
+				<GradientStop Offset="1" Color="#2A384A"/>
+			</LinearGradientBrush>
+		</Border.Background>
+		<Border.BorderBrush>
+			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+				<GradientStop Offset="0" Color="#4DABF7"/>
+				<GradientStop Offset="0.5" Color="#5BB5F3"/>
+				<GradientStop Offset="1" Color="#4DABF7"/>
+			</LinearGradientBrush>
+		</Border.BorderBrush>
+		<Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+			<Border Height="2" 
+					VerticalAlignment="Bottom" 
+					HorizontalAlignment="Stretch"
+					Background="#20FFFFFF"/>
+			
+			<StackPanel Spacing="0"
+						HorizontalAlignment="Center"
+						VerticalAlignment="Center"
+						Orientation="Horizontal"
+						Margin="20,10,20,10">			<cmpts:NavButton Name="DeviceList"
+							 Icon="Assets/NavIcons/home.png"
+							 Text="Device List"
+							 Command="{Binding GoToDeviceList}"
+							 IsActive="{Binding PageTitle, Converter={StaticResource stringEqualsConverter}, ConverterParameter='==|Device List'}" >
+				<ToolTip.Tip>
+					<StackPanel>
+						<TextBlock Classes="h1">Device List</TextBlock>
+						<TextBlock Classes="p">
+							Target management
+						</TextBlock>
+					</StackPanel>
+				</ToolTip.Tip>
+			</cmpts:NavButton>
+			<cmpts:NavButton Name="Rules"
+							 Icon="Assets/NavIcons/rules.png"
+							 Text="Rules"
+							 Command="{Binding GoToRules}"
+							 IsActive="{Binding PageTitle, Converter={StaticResource stringEqualsConverter}, ConverterParameter='==|Rule Builder'}" >
+				<ToolTip.Tip>
+					<StackPanel>
+						<TextBlock Classes="h1">Target Rules</TextBlock>
+						<TextBlock Classes="p">
+							Apply custom rules for automatic targeting of devices that match a specific criteria.
+						</TextBlock>
+					</StackPanel>
+				</ToolTip.Tip>
+			</cmpts:NavButton>
+			<cmpts:NavButton Name="Sniffer"
+							 Icon="Assets/NavIcons/sniffer.png"
+							 Text="Sniffer"
+							 Command="{Binding GoToSniffer}"
+							 IsActive="{Binding PageTitle, Converter={StaticResource stringEqualsConverter}, ConverterParameter='==|Packet Sniffer'}" >
+				<ToolTip.Tip>
+					<StackPanel>
+						<TextBlock Classes="h1">Packet Sniffer</TextBlock>
+						<TextBlock Classes="p">
+							Monitor incoming and outgoing packets of a certain device and see their information and properties.
+						</TextBlock>
+					</StackPanel>
+				</ToolTip.Tip>
+			</cmpts:NavButton>
+			<cmpts:NavButton Name="Options"
+							 Icon="Assets/NavIcons/options.png"
+							 Text="Options"
+							 Command="{Binding GoToOptions}"
+							 IsActive="{Binding PageTitle, Converter={StaticResource stringEqualsConverter}, ConverterParameter='==|Options'}" >
+				<ToolTip.Tip>
+					<StackPanel>
+						<TextBlock Classes="h1">Options</TextBlock>
+						<TextBlock Classes="p">
+							Configure NetW1re options.
+						</TextBlock>
+					</StackPanel>
+				</ToolTip.Tip>
+			</cmpts:NavButton>
+			<cmpts:NavButton Name="Help"
+							 Icon="Assets/NavIcons/help.png"
+							 Text="Help"
+							 Command="{Binding GoToHelp}"
+							 IsActive="{Binding PageTitle, Converter={StaticResource stringEqualsConverter}, ConverterParameter='==|Help'}" >
+				<ToolTip.Tip>
+					<StackPanel>
+						<TextBlock Classes="h1">Help Section</TextBlock>
+						<TextBlock Classes="p">
+							Read for app use guidance and helpful tips.
+						</TextBlock>
+					</StackPanel>
+				</ToolTip.Tip>
+			</cmpts:NavButton>
+			<cmpts:NavButton Name="About"
+							 Icon="Assets/NavIcons/about.png"
+							 Text="About"
+							 Command="{Binding GoToAbout}"
+							 IsActive="{Binding PageTitle, Converter={StaticResource stringEqualsConverter}, ConverterParameter='==|About'}" >
+				<ToolTip.Tip>
+					<StackPanel>
+						<TextBlock Classes="h1">About Section</TextBlock>
+						<TextBlock Classes="p">
+							Info about the app and developer.
+						</TextBlock>
+					</StackPanel>
+				</ToolTip.Tip>
+			</cmpts:NavButton>		</StackPanel>
+		</Grid>
+	</Border>
+</UserControl>
+
+
+

@@ -1,0 +1,178 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:NetW1reAvalonia.Core.ViewModels.RoutedViewModels"
+			 xmlns:cmpts="using:NetW1reAvalonia.Core.Views.Components"
+			 xmlns:views="using:NetW1reAvalonia.Core.Views.RoutedViews"
+			 xmlns:converters="using:NetW1reAvalonia.Core.Converters"
+			 mc:Ignorable="d"
+			 x:Class="NetW1reAvalonia.Core.Views.RoutedViews.SnifferView">
+
+	<Design.DataContext>
+		<vm:SnifferViewModel />
+	</Design.DataContext>
+	
+	<Grid Margin="20,20,20,80">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="Auto" />
+			<RowDefinition Height="*" />
+		</Grid.RowDefinitions>
+
+		<Border Grid.Row="0" Background="#1E293B" BorderBrush="#136999" BorderThickness="1" 
+				CornerRadius="8" Padding="20" Margin="0,0,0,15">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="*" />
+					<ColumnDefinition Width="Auto" />
+				</Grid.ColumnDefinitions>
+				<StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="15" VerticalAlignment="Center">
+					<TextBlock Text="Device:" Foreground="#E2E8F0" FontWeight="SemiBold" VerticalAlignment="Center"/>
+					
+					<ComboBox ItemsSource="{Binding NetworkDevices}" 
+							  SelectedItem="{Binding SelectedDevice}"
+							  Width="250" Background="#374151" BorderBrush="#136999" 
+							  Foreground="#E2E8F0"/>
+					
+					<Button Command="{Binding RefreshDevicesCommand}" 
+							Background="#374151" BorderBrush="#136999" Foreground="#E2E8F0"
+							Padding="10,6" ToolTip.Tip="Refresh Devices">
+						<TextBlock Text="🔄" FontSize="14"/>
+					</Button>
+							<Rectangle Width="1" Fill="#475569" Margin="10,0"/>
+					
+					<Button Command="{Binding StartCaptureCommand}" 
+							Background="#10B981" Foreground="White" FontWeight="SemiBold"
+							Padding="15,8" CornerRadius="4" ToolTip.Tip="Start Capture">
+						<StackPanel Orientation="Horizontal" Spacing="5">
+							<TextBlock Text="▶" FontSize="12"/>
+							<TextBlock Text="Start"/>
+						</StackPanel>
+					</Button>
+					
+					<Button Command="{Binding StopCaptureCommand}" 
+							Background="#EF4444" Foreground="White" FontWeight="SemiBold"
+							Padding="15,8" CornerRadius="4" ToolTip.Tip="Stop Capture">
+						<StackPanel Orientation="Horizontal" Spacing="5">
+							<TextBlock Text="⏹" FontSize="12"/>
+							<TextBlock Text="Stop"/>
+						</StackPanel>
+					</Button>
+					
+					<Button Command="{Binding ClearPacketsCommand}" 
+							Background="#6B7280" Foreground="White" FontWeight="SemiBold"
+							Padding="15,8" CornerRadius="4" ToolTip.Tip="Clear Packets">
+						<StackPanel Orientation="Horizontal" Spacing="5">
+							<TextBlock Text="🗑" FontSize="12"/>
+							<TextBlock Text="Clear"/>
+						</StackPanel>
+					</Button>
+				</StackPanel>
+
+				<StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="15" VerticalAlignment="Center">
+					<TextBlock Text="{Binding PacketCount, StringFormat='{}{0} packets'}" 
+							   Foreground="#4DABF7" FontWeight="Bold" FontSize="16"/>
+				</StackPanel>
+			</Grid>
+		</Border>
+
+		<Border Grid.Row="1" Background="#0F172A" BorderBrush="#334155" BorderThickness="1" 
+				CornerRadius="4" Padding="15,8" Margin="0,0,0,15">
+			<TextBlock Text="{Binding StatusMessage}" Foreground="#E2E8F0" FontSize="14"/>
+		</Border>
+		<Grid Grid.Row="2">
+			<Border Background="#1E293B" BorderBrush="#136999" BorderThickness="1" CornerRadius="8">
+				<Grid>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto" />
+						<RowDefinition Height="*" />
+					</Grid.RowDefinitions>
+					
+					<Border Grid.Row="0" Background="#0F172A" BorderBrush="#334155" BorderThickness="0,0,0,1" 
+							Padding="15,10">
+						<Grid>
+							<Grid.ColumnDefinitions>
+								<ColumnDefinition Width="*" />
+								<ColumnDefinition Width="Auto" />
+							</Grid.ColumnDefinitions>
+							
+							<StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+								<TextBlock Text="📦" FontSize="18" VerticalAlignment="Center"/>
+								<TextBlock Text="Captured Packets" FontSize="16" FontWeight="Bold" 
+										   Foreground="#E2E8F0" VerticalAlignment="Center"/>
+							</StackPanel>
+							
+							<Button Grid.Column="1" Command="{Binding OpenDetailedPacketWindowCommand}"
+									Background="#2563EB" Foreground="White" FontWeight="SemiBold"
+									Padding="12,6" CornerRadius="4" ToolTip.Tip="Open Detailed Packet Window"
+									IsVisible="{Binding SelectedPacket, Converter={x:Static ObjectConverters.IsNotNull}}">
+								<StackPanel Orientation="Horizontal" Spacing="5">
+									<TextBlock Text="🔍" FontSize="12"/>
+									<TextBlock Text="Detailed View"/>
+								</StackPanel>
+							</Button>
+						</Grid>
+					</Border>					<DataGrid x:Name="PacketDataGrid" Grid.Row="1" ItemsSource="{Binding CapturedPackets}" 
+							  SelectedItem="{Binding SelectedPacket}"
+							  Background="Transparent" BorderThickness="0"
+						  GridLinesVisibility="Horizontal"
+						  HeadersVisibility="Column"
+						  CanUserReorderColumns="True"
+						  CanUserResizeColumns="True"
+						  CanUserSortColumns="True"
+						  IsReadOnly="True">
+							<DataGrid.Columns>
+						<DataGridTextColumn Header="Time" Binding="{Binding Timestamp, StringFormat='{}{0:HH:mm:ss.fff}'}" 
+											Width="100" />
+						<DataGridTextColumn Header="Source" Binding="{Binding Source}" Width="140" />
+						<DataGridTextColumn Header="Destination" Binding="{Binding Destination}" Width="140" />
+						<DataGridTextColumn Header="Protocol" Binding="{Binding Protocol}" Width="80" />
+						<DataGridTextColumn Header="Ports" Binding="{Binding Ports}" Width="80" />
+						<DataGridTextColumn Header="Length" Binding="{Binding Length}" Width="80" />
+						<DataGridTextColumn Header="Info" Binding="{Binding Info}" Width="*" />
+					</DataGrid.Columns>
+
+					<DataGrid.Styles>
+						<Style Selector="DataGridColumnHeader">
+							<Setter Property="Background" Value="#0F172A"/>
+							<Setter Property="Foreground" Value="#E2E8F0"/>
+							<Setter Property="FontWeight" Value="SemiBold"/>
+							<Setter Property="Padding" Value="12,8"/>
+							<Setter Property="BorderBrush" Value="#334155"/>
+							<Setter Property="BorderThickness" Value="0,0,1,1"/>
+						</Style>
+						
+						<Style Selector="DataGridRow">
+							<Setter Property="Background" Value="Transparent"/>
+							<Setter Property="Foreground" Value="#E2E8F0"/>
+						</Style>
+						
+						<Style Selector="DataGridRow:pointerover">
+							<Setter Property="Background" Value="#374151"/>
+						</Style>
+						
+						<Style Selector="DataGridRow:selected">
+							<Setter Property="Background" Value="#136999"/>
+						</Style>
+								<Style Selector="DataGridCell">
+							<Setter Property="BorderThickness" Value="0,0,1,0"/>
+							<Setter Property="BorderBrush" Value="#334155"/>
+							<Setter Property="Padding" Value="12,6"/>						</Style>					</DataGrid.Styles>
+
+				</DataGrid>
+				
+				<StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" 
+							Spacing="10" Opacity="0.7" ZIndex="1"
+							IsVisible="{Binding !CapturedPackets.Count}">
+					<TextBlock Text="📡" FontSize="48" HorizontalAlignment="Center" Foreground="#6B7280"/>
+					<TextBlock Text="No packets captured yet" FontSize="16" 
+							   Foreground="#9CA3AF" HorizontalAlignment="Center" FontWeight="SemiBold"/>
+					<TextBlock Text="Start capturing to see network packets" 
+							   FontSize="12" Foreground="#6B7280" HorizontalAlignment="Center" 
+							   TextWrapping="Wrap" TextAlignment="Center" MaxWidth="250"/>				</StackPanel>
+			</Grid>
+		</Border>
+	</Grid>
+	</Grid>
+</UserControl>

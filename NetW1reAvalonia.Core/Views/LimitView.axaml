@@ -1,0 +1,76 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="using:NetW1reAvalonia.Core.ViewModels"
+        xmlns:cmpts="using:NetW1reAvalonia.Core.Views.Components"
+        mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="270"
+        x:Class="NetW1reAvalonia.Core.Views.LimitView"
+        Title="Limit Device">
+
+    <Design.DataContext>
+        <vm:LimitViewModel />
+    </Design.DataContext>    <Window.Styles>
+        <StyleInclude Source="/Assets/GlobalStyles/WindowStyles.axaml" />
+        <Style Selector="Window">
+			<Setter Property="CanResize" Value="False" />
+            <Setter Property="Width" Value="520" />
+        </Style>
+        <Style Selector="NumericUpDown">
+            <Setter Property="Width" Value="180" />
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="BorderBrush" Value="#40FFFFFF" />
+            <Setter Property="Background" Value="#20FFFFFF" />
+        </Style>
+        <Style Selector="NumericUpDown:focus">
+            <Setter Property="BorderBrush" Value="#136999" />
+            <Setter Property="Background" Value="#30FFFFFF" />
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="Padding" Value="80,12" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="#136999" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+        <Style Selector="Button:pointerover">
+            <Setter Property="Background" Value="#1a7bb3" />
+        </Style>
+        <Style Selector="Label">
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="FontSize" Value="14" />
+        </Style>
+    </Window.Styles>
+
+
+    <Grid RowDefinitions="Auto,*">
+        <cmpts:PageTitle Grid.Row="0" VerticalAlignment="Stretch" Text="{Binding $parent[Window].Title}" />        <Border Grid.Row="1" Padding="20">
+            <StackPanel Orientation="Vertical" Spacing="25">
+                <StackPanel Orientation="Horizontal"
+                            Spacing="25"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <StackPanel Spacing="8">
+                        <Label Margin="0,0,0,4">Download (KB/s)</Label>
+                        <NumericUpDown Minimum="0" Value="{Binding DeviceLimits.Download}" />
+                    </StackPanel>
+                    <StackPanel Spacing="8">
+                        <Label Margin="0,0,0,4">Upload (KB/s)</Label>
+                        <NumericUpDown Minimum="0" Value="{Binding DeviceLimits.Upload}" />
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                    <Button Command="{Binding Apply}">Apply Limits</Button>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
+
+
+

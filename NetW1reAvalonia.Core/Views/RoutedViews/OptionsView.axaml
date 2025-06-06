@@ -1,0 +1,85 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="using:NetW1reAvalonia.Core.ViewModels.RoutedViewModels"
+			 xmlns:cmpts="using:NetW1reAvalonia.Core.Views.Components"
+			 mc:Ignorable="d"
+			 x:Class="NetW1reAvalonia.Core.Views.RoutedViews.OptionsView">
+
+	<Design.DataContext>
+		<vm:OptionsViewModel />
+	</Design.DataContext>
+
+	<Grid Margin="20,20,20,80">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="*"/>
+		</Grid.ColumnDefinitions>
+
+		<StackPanel Grid.Column="0" Spacing="25" Margin="0,0,20,0">
+			
+			<StackPanel Spacing="10">
+				<TextBlock Text="Password Protection" FontSize="20" FontWeight="Bold" Foreground="#136999"/>
+						<TextBox PasswordChar="*" Watermark="New Password" 
+						 Text="{Binding NewPassword, Mode=TwoWay}" 
+						 Background="#374151" BorderBrush="#136999" Foreground="#E2E8F0"
+						 ToolTip.Tip="Enter a new password to protect access to NetW1re"/>
+				
+				<Button Content="Set" Command="{Binding SetPassword}" 
+						Background="#136999" Foreground="White" FontWeight="SemiBold" 
+						HorizontalAlignment="Left" Padding="20,8"
+						ToolTip.Tip="Apply this password to protect NetW1re. You'll be asked for this password when starting the application."/>
+			</StackPanel>
+
+			<StackPanel Spacing="10">
+				<TextBlock Text="Other Options" FontSize="20" FontWeight="Bold" Foreground="#136999"/>
+						<CheckBox Content="Spoof Protection" 
+						  IsChecked="{Binding AppSettings.SpoofProtectionSetting, Mode=TwoWay}" 
+						  Foreground="#CBD5E1" FontWeight="SemiBold"
+						  ToolTip.Tip="Detects and protects against MAC address spoofing attempts on your network"/>
+				<CheckBox Content="Suppress Notifications" 
+						  IsChecked="{Binding AppSettings.NotificationSuppressionSetting, Mode=TwoWay}" 
+						  Foreground="#CBD5E1" FontWeight="SemiBold"
+						  ToolTip.Tip="Disables popup notifications when new devices connect to the network"/>
+				
+				<Button Content="Clear Device Info" 
+						ToolTip.Tip="Clears the custom device names stored by the user."
+						Background="#374151" BorderBrush="#136999" Foreground="#E2E8F0" 
+						FontWeight="SemiBold" HorizontalAlignment="Left" Padding="20,8"/>
+			</StackPanel>
+		</StackPanel>
+
+		<StackPanel Grid.Column="1" Spacing="25" Margin="20,0,0,0">
+			
+			<StackPanel Spacing="10">
+				<TextBlock Text="Minimize Application" FontSize="20" FontWeight="Bold" Foreground="#136999"/>
+						<RadioButton Content="Tray" 
+							 IsChecked="{Binding AppSettings.MinimizeToTraySetting, Mode=TwoWay}" 
+							 Foreground="#CBD5E1" FontWeight="SemiBold"
+							 ToolTip.Tip="When minimized, the application will only be visible in the system tray (notification area)"/>
+				<RadioButton Content="Taskbar" 
+							 IsChecked="{Binding AppSettings.MinimizeToTaskbarSetting, Mode=TwoWay}" 
+							 Foreground="#CBD5E1" FontWeight="SemiBold"
+							 ToolTip.Tip="When minimized, the application will be visible in the Windows taskbar"/>
+			</StackPanel>
+
+			<StackPanel Spacing="10">
+				<TextBlock Text="Mac API Token" FontSize="20" FontWeight="Bold" Foreground="#136999"/>
+				
+				<TextBlock TextWrapping="Wrap" Foreground="#94A3B8" FontSize="14"
+						   Text="If you can't see the device's manufacturer, acquire a new token from the link below and enter it in the API field."/>
+						<TextBox Watermark="Token" 
+						 Text="{Binding AppSettings.VendorApiTokenSetting, Mode=TwoWay}" 
+						 Background="#374151" BorderBrush="#136999" Foreground="#E2E8F0"
+						 ToolTip.Tip="Enter your MAC Vendor API token to resolve manufacturer names for device MAC addresses"/>
+				
+				<cmpts:LinkButton Link="https://macvendors.com/api" Text="Mac Vendors API" 
+								  ToolTip.Tip="Click to visit the website and get a free API token"/>
+			</StackPanel>
+		</StackPanel>
+	</Grid>
+</UserControl>
+
+
+

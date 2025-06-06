@@ -1,0 +1,44 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="NetW1reAvalonia.Core.Views.Components.PageTitle">    <StackPanel Orientation="Horizontal" VerticalAlignment="Center"
+                Margin="0,40,0,20">
+        <Border CornerRadius="12,0,0,12" BorderThickness="1" BorderBrush="#20000000">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Offset="0" Color="#4DABF7"/>
+                    <GradientStop Offset="0.5" Color="#339AF0"/>
+                    <GradientStop Offset="1" Color="#136999"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <StackPanel Margin="28,12,0,12"
+						Spacing="5"
+				        Orientation="Horizontal">
+                <TextBlock Name="PageTitleText"
+					       Text="{Binding $parent[UserControl].Text}"
+                           Foreground="#FFFFFF"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Padding="12,0,12,0"
+                           LetterSpacing="0.5" />
+            </StackPanel>
+        </Border>
+        <Polygon Points="0,0 40,0, 0,47" 
+                 Stroke="Transparent"
+                 Stretch="Fill">
+            <Polygon.Fill>
+                <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                    <GradientStop Offset="0" Color="#4DABF7"/>
+                    <GradientStop Offset="0.5" Color="#339AF0"/>
+                    <GradientStop Offset="1" Color="#136999"/>
+                </LinearGradientBrush>
+            </Polygon.Fill>
+        </Polygon>
+    </StackPanel>
+</UserControl>
+
+
+

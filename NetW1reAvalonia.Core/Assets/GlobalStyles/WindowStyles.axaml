@@ -1,0 +1,1527 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <Design.PreviewWith>
+    <Border Padding="20">
+      <StackPanel>
+        <CheckBox Content="Box"/>
+        <Button Content="Button Text"></Button>
+      </StackPanel>
+    </Border>
+  </Design.PreviewWith>
+  
+  <!-- Window Styles -->
+  <Style Selector="Window">
+    <Setter Property="SizeToContent" Value="Height" />
+    <Setter Property="WindowStartupLocation" Value="CenterOwner" />
+    <Setter Property="TransparencyLevelHint" Value="AcrylicBlur" />
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#0F1419"/>
+            <GradientStop Offset="0.3" Color="#1A1F2E"/>
+            <GradientStop Offset="0.7" Color="#1E2536"/>
+            <GradientStop Offset="1" Color="#242B3D"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
+    <Setter Property="Icon" Value="/Assets/netw1re-logo.ico" />
+    <Setter Property="FontFamily" Value="/Assets/Fonts/Montserrat.ttf#Montserrat" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+  </Style>
+  
+  <!-- Enhanced Typography Styles -->
+  <Style Selector="TextBlock.h1">
+    <Setter Property="FontWeight" Value="Bold"/>
+    <Setter Property="FontSize" Value="24"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="Margin" Value="0,0,0,16"/>
+    <Setter Property="LetterSpacing" Value="0.5"/>
+    <Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+  </Style>
+  
+  <Style Selector="TextBlock.h2">
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="FontSize" Value="20"/>
+    <Setter Property="Foreground" Value="#E8F4FD"/>
+    <Setter Property="Margin" Value="0,0,0,12"/>
+    <Setter Property="LetterSpacing" Value="0.3"/>
+  </Style>
+  
+  <Style Selector="TextBlock.h3">
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="Foreground" Value="#E8F4FD"/>
+    <Setter Property="Margin" Value="0,0,0,8"/>
+  </Style>
+  
+  <Style Selector="TextBlock.p">
+    <Setter Property="TextWrapping" Value="Wrap"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Foreground" Value="#E2E8F0"/>
+    <Setter Property="LineHeight" Value="1.6"/>
+    <Setter Property="Margin" Value="0,0,0,8"/>
+    <Setter Property="FontWeight" Value="Normal"/>
+  </Style>
+  
+  <Style Selector="TextBlock.small">
+    <Setter Property="FontSize" Value="12"/>
+    <Setter Property="Foreground" Value="#94A3B8"/>
+    <Setter Property="FontWeight" Value="Normal"/>
+  </Style>
+  
+  <Style Selector="TextBlock.caption">
+    <Setter Property="FontSize" Value="11"/>
+    <Setter Property="Foreground" Value="#64748B"/>
+    <Setter Property="FontWeight" Value="Medium"/>
+    <Setter Property="LetterSpacing" Value="1"/>
+  </Style>
+  
+  <!-- Enhanced Container Styles -->
+  <Style Selector="Border.label">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#2A3441"/>
+            <GradientStop Offset="0.5" Color="#34404F"/>
+            <GradientStop Offset="1" Color="#3E4B5D"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Padding" Value="20,16,20,16" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="BorderBrush" Value="#4DABF7" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Transitions">
+      <Transitions>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="Border.label:pointerover">
+  </Style>
+  
+  <Style Selector="Border.label > StackPanel > TextBlock">
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="FontSize" Value="14" />
+  </Style>
+  
+  <Style Selector="Border.control-group">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#242B3D"/>
+            <GradientStop Offset="0.5" Color="#2A3247"/>
+            <GradientStop Offset="1" Color="#303951"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Padding" Value="24,20,24,20" />
+    <Setter Property="CornerRadius" Value="16" />
+    <Setter Property="BorderBrush" Value="#3D4D5C" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Transitions">
+      <Transitions>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="Border.control-group:pointerover">
+  </Style>
+  
+  <Style Selector="TextBox:focus /template/ Border">
+    <Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="ComboBox:focus /template/ Border">
+    <Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="Button:focus">
+    <Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="Button">
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#4DABF7"/>
+            <GradientStop Offset="0.5" Color="#339AF0"/>
+            <GradientStop Offset="1" Color="#136999"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Padding" Value="20,12,20,12" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+        <BrushTransition Property="Background" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="Button:pointerover">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#5BB3FF"/>
+            <GradientStop Offset="0.5" Color="#3BA3F0"/>
+            <GradientStop Offset="1" Color="#1E7BB8"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="RenderTransform" Value="scale(1.02)" />
+  </Style>
+  
+  <Style Selector="Button:pressed">
+    <Setter Property="RenderTransform" Value="scale(0.98)" />
+  </Style>
+  
+  <Style Selector="CheckBox:checked /template/ Border">
+    <Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
+    <Setter Property="Background" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="RadioButton:checked /template/ Ellipse#CheckOuterEllipse">
+    <Setter Property="Fill" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="RadioButton:checked /template/ Border">
+    <Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="RadioButton:checked /template/ Ellipse">
+    <Setter Property="Stroke" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="StackPanel.infoPanel">
+    <Setter Property="Orientation" Value="Horizontal"/>
+    <Setter Property="Margin" Value="0,0,0,8"/>
+  </Style>
+  
+  <Style Selector="StackPanel.infoPanel > TextBlock.label">
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  
+  <Style Selector="StackPanel.infoPanel > Rectangle.indicator">
+    <Setter Property="Margin" Value="0,0,12,0"/>
+  </Style>
+  
+  <Style Selector="StackPanel.infoPanel > TextBlock.labelValue">
+    <Setter Property="FontWeight" Value="Normal"/>
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="Foreground" Value="#E2E8F0"/>
+    <Setter Property="Margin" Value="12,0,0,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  
+  <Style Selector="TextBlock.title">
+    <Setter Property="FontWeight" Value="Bold"/>
+    <Setter Property="FontSize" Value="28"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="Margin" Value="0,16,0,16"/>
+  </Style>
+  
+  <Style Selector="Border.wrapper">
+    <Setter Property="Padding" Value="15" />
+  </Style>
+  
+  <!-- Premium Modern TextBox Styles -->
+  <Style Selector="TextBox">
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#242B3D"/>
+            <GradientStop Offset="1" Color="#2A3247"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="BorderBrush" Value="#3D4D5C" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Padding" Value="16,12,16,12" />
+    <Setter Property="SelectionBrush" Value="#136999" />
+    <Setter Property="CaretBrush" Value="#4DABF7" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="TextBox:focus">
+    <Setter Property="BorderBrush" Value="#4DABF7" />
+    <Setter Property="BorderThickness" Value="2" />
+  </Style>
+  
+  <Style Selector="TextBox:pointerover">
+    <Setter Property="BorderBrush" Value="#4A9BD1" />
+  </Style>
+  
+  <!-- Premium Modern ComboBox Styles -->
+  <Style Selector="ComboBox">
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#242B3D"/>
+            <GradientStop Offset="1" Color="#2A3247"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="BorderBrush" Value="#3D4D5C" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Padding" Value="16,12,16,12" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="ComboBox:focus">
+    <Setter Property="BorderBrush" Value="#4DABF7" />
+    <Setter Property="BorderThickness" Value="2" />
+  </Style>
+  
+  <Style Selector="ComboBox:pointerover">
+    <Setter Property="BorderBrush" Value="#4A9BD1" />
+  </Style>
+  
+  <!-- Premium Modern CheckBox Styles -->
+  <Style Selector="CheckBox">
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="FontWeight" Value="Medium" />
+  </Style>
+  
+  <Style Selector="CheckBox /template/ Border">
+    <Setter Property="Background" Value="#242B3D" />
+    <Setter Property="BorderBrush" Value="#3D4D5C" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="4" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+        <BrushTransition Property="Background" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="CheckBox:checked /template/ Border">
+    <Setter Property="Background" Value="#4DABF7" />
+    <Setter Property="BorderBrush" Value="#4DABF7" />
+  </Style>
+  
+  <Style Selector="CheckBox:pointerover /template/ Border">
+    <Setter Property="BorderBrush" Value="#4A9BD1" />
+  </Style>
+  
+  <!-- Premium Modern RadioButton Styles -->
+  <Style Selector="RadioButton">
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="FontWeight" Value="Medium" />
+  </Style>
+  
+  <Style Selector="RadioButton /template/ Ellipse">
+    <Setter Property="Fill" Value="#242B3D" />
+    <Setter Property="Stroke" Value="#3D4D5C" />
+    <Setter Property="StrokeThickness" Value="1" />
+  </Style>
+  
+  <Style Selector="RadioButton:checked /template/ Ellipse">
+    <Setter Property="Fill" Value="#4DABF7" />
+    <Setter Property="Stroke" Value="#4DABF7" />
+  </Style>
+  
+  <Style Selector="RadioButton:pointerover /template/ Ellipse">
+    <Setter Property="Stroke" Value="#4A9BD1" />
+  </Style>
+  
+  <!-- Premium Modern DataGrid Styles -->
+  <Style Selector="DataGrid">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#1A252F"/>
+            <GradientStop Offset="1" Color="#1E2936"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="BorderBrush" Value="#3D4D5C" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="RowBackground" Value="Transparent" />
+    <Setter Property="HorizontalGridLinesBrush" Value="#2A3441" />
+    <Setter Property="GridLinesVisibility" Value="Horizontal" />
+  </Style>
+  
+  <Style Selector="DataGridRow:selected">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#4DABF7"/>
+            <GradientStop Offset="1" Color="#136999"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Foreground" Value="#FFFFFF" />
+  </Style>
+  
+  <Style Selector="DataGridRow:pointerover">
+    <Setter Property="Background" Value="#2A3441" />
+  </Style>
+  
+  <Style Selector="DataGridColumnHeader">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#2A3847"/>
+            <GradientStop Offset="1" Color="#324050"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="Padding" Value="12,8"/>
+    <Setter Property="BorderBrush" Value="#4A9BD1" />
+  </Style>
+  
+  <!-- Premium Tooltip Styles -->
+  <Style Selector="ToolTip">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#1E293B"/>
+            <GradientStop Offset="1" Color="#334155"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="FontSize" Value="12"/>
+    <Setter Property="FontWeight" Value="Medium"/>
+    <Setter Property="Padding" Value="12,8"/>
+    <Setter Property="CornerRadius" Value="8"/>
+    <Setter Property="BorderBrush" Value="#4DABF7"/>
+    <Setter Property="BorderThickness" Value="1"/>
+  </Style>
+  
+  <!-- Premium Scrollbar Styles -->
+  <Style Selector="ScrollBar">
+    <Setter Property="Background" Value="Transparent"/>
+  </Style>
+  
+  <Style Selector="ScrollBar:vertical">
+    <Setter Property="Width" Value="12"/>
+  </Style>
+  
+  <Style Selector="ScrollBar:horizontal">
+    <Setter Property="Height" Value="12"/>
+  </Style>
+  
+  <Style Selector="ScrollBar /template/ Thumb">
+    <Setter Property="Background" Value="#4DABF7"/>
+    <Setter Property="CornerRadius" Value="6"/>
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="ScrollBar /template/ Thumb:pointerover">
+    <Setter Property="Background" Value="#339AF0"/>
+  </Style>
+  
+  <Style Selector="ScrollBar /template/ Thumb:pressed">
+    <Setter Property="Background" Value="#136999"/>
+  </Style>
+  
+  <!-- Premium Menu and Context Menu Styles -->
+  <Style Selector="MenuItem">
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Padding" Value="12,8"/>
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="MenuItem:pointerover">
+    <Setter Property="Background" Value="#334155"/>
+  </Style>
+  
+  <Style Selector="MenuItem:selected">
+    <Setter Property="Background" Value="#4DABF7"/>
+  </Style>
+  
+  <Style Selector="Menu">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#1E293B"/>
+            <GradientStop Offset="1" Color="#334155"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="CornerRadius" Value="8"/>
+    <Setter Property="BorderBrush" Value="#4DABF7"/>    <Setter Property="BorderThickness" Value="1"/>  </Style>  
+  <!-- Enhanced Focus Styles -->
+  
+  <Style Selector="Button:focus-visible">
+    <Setter Property="BorderThickness" Value="2"/>
+    <Setter Property="BorderBrush" Value="#4DABF7"/>
+  </Style>
+  
+  <Style Selector="TextBox:focus-visible">
+    <Setter Property="BorderThickness" Value="2"/>
+    <Setter Property="BorderBrush" Value="#4DABF7"/>
+  </Style>
+  
+  <Style Selector="TextBlock.h3">
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="Foreground" Value="#E8F4FD"/>
+    <Setter Property="Margin" Value="0,0,0,8"/>
+  </Style>
+  
+  <Style Selector="TextBlock.p">
+    <Setter Property="TextWrapping" Value="Wrap"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Foreground" Value="#E2E8F0"/>
+    <Setter Property="LineHeight" Value="1.6"/>
+    <Setter Property="Margin" Value="0,0,0,8"/>
+    <Setter Property="FontWeight" Value="Normal"/>
+  </Style>
+  
+  <Style Selector="TextBlock.small">
+    <Setter Property="FontSize" Value="12"/>
+    <Setter Property="Foreground" Value="#94A3B8"/>
+    <Setter Property="FontWeight" Value="Normal"/>
+  </Style>
+  
+  <Style Selector="TextBlock.caption">
+    <Setter Property="FontSize" Value="11"/>
+    <Setter Property="Foreground" Value="#64748B"/>
+    <Setter Property="FontWeight" Value="Medium"/>
+    <Setter Property="LetterSpacing" Value="1"/>
+  </Style>
+  
+  <!-- Enhanced Container Styles -->
+  <Style Selector="Border.label">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#2A3441"/>
+            <GradientStop Offset="0.5" Color="#34404F"/>
+            <GradientStop Offset="1" Color="#3E4B5D"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Padding" Value="20,16,20,16" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="BorderBrush" Value="#4DABF7" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Transitions">
+      <Transitions>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="Border.label:pointerover">
+  </Style>
+  
+  <Style Selector="Border.label > StackPanel > TextBlock">
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="FontSize" Value="14" />
+  </Style>
+  
+  <Style Selector="Border.control-group">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#242B3D"/>
+            <GradientStop Offset="0.5" Color="#2A3247"/>
+            <GradientStop Offset="1" Color="#303951"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Padding" Value="24,20,24,20" />
+    <Setter Property="CornerRadius" Value="16" />
+    <Setter Property="BorderBrush" Value="#3D4D5C" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="Transitions">
+      <Transitions>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="Border.control-group:pointerover">
+  </Style>
+  
+  <Style Selector="TextBox:focus /template/ Border">
+    <Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="ComboBox:focus /template/ Border">
+    <Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="Button:focus">
+    <Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="Button">
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#4DABF7"/>
+            <GradientStop Offset="0.5" Color="#339AF0"/>
+            <GradientStop Offset="1" Color="#136999"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="BorderBrush" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Padding" Value="20,12,20,12" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+        <BrushTransition Property="Background" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="Button:pointerover">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#5BB3FF"/>
+            <GradientStop Offset="0.5" Color="#3BA3F0"/>
+            <GradientStop Offset="1" Color="#1E7BB8"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="RenderTransform" Value="scale(1.02)" />
+  </Style>
+  
+  <Style Selector="Button:pressed">
+    <Setter Property="RenderTransform" Value="scale(0.98)" />
+  </Style>
+  
+  <Style Selector="CheckBox:checked /template/ Border">
+    <Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
+    <Setter Property="Background" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="RadioButton:checked /template/ Ellipse#CheckOuterEllipse">
+    <Setter Property="Fill" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="RadioButton:checked /template/ Border">
+    <Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="RadioButton:checked /template/ Ellipse">
+    <Setter Property="Stroke" Value="{Binding Theme.AccentColor}" />
+  </Style>
+  
+  <Style Selector="StackPanel.infoPanel">
+    <Setter Property="Orientation" Value="Horizontal"/>
+    <Setter Property="Margin" Value="0,0,0,8"/>
+  </Style>
+  
+  <Style Selector="StackPanel.infoPanel > TextBlock.label">
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  
+  <Style Selector="StackPanel.infoPanel > Rectangle.indicator">
+    <Setter Property="Margin" Value="0,0,12,0"/>
+  </Style>
+  
+  <Style Selector="StackPanel.infoPanel > TextBlock.labelValue">
+    <Setter Property="FontWeight" Value="Normal"/>
+    <Setter Property="FontSize" Value="16"/>
+    <Setter Property="Foreground" Value="#E2E8F0"/>
+    <Setter Property="Margin" Value="12,0,0,0"/>
+    <Setter Property="VerticalAlignment" Value="Center"/>
+  </Style>
+  
+  <Style Selector="TextBlock.title">
+    <Setter Property="FontWeight" Value="Bold"/>
+    <Setter Property="FontSize" Value="28"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="Margin" Value="0,16,0,16"/>
+  </Style>
+  
+  <Style Selector="TextBlock.h1">
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="FontSize" Value="18"/>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="Margin" Value="0,0,0,12"/>
+  </Style>
+  
+  <Style Selector="TextBlock.p">
+    <Setter Property="TextWrapping" Value="Wrap"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Foreground" Value="#E2E8F0"/>
+    <Setter Property="LineHeight" Value="1.5"/>
+  </Style>
+  
+  <Style Selector="Border.wrapper">
+    <Setter Property="Padding" Value="15" />
+  </Style>
+  
+  <!-- Premium Modern TextBox Styles -->
+  <Style Selector="TextBox">
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#242B3D"/>
+            <GradientStop Offset="1" Color="#2A3247"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="BorderBrush" Value="#3D4D5C" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Padding" Value="16,12,16,12" />
+    <Setter Property="SelectionBrush" Value="#136999" />
+    <Setter Property="CaretBrush" Value="#4DABF7" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="TextBox:focus">
+    <Setter Property="BorderBrush" Value="#4DABF7" />
+    <Setter Property="BorderThickness" Value="2" />
+  </Style>
+  
+  <Style Selector="TextBox:pointerover">
+    <Setter Property="BorderBrush" Value="#4A9BD1" />
+  </Style>
+  
+  <!-- Premium Modern ComboBox Styles -->
+  <Style Selector="ComboBox">
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="FontWeight" Value="Normal" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#242B3D"/>
+            <GradientStop Offset="1" Color="#2A3247"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="BorderBrush" Value="#3D4D5C" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="8" />
+    <Setter Property="Padding" Value="16,12,16,12" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="ComboBox:focus">
+    <Setter Property="BorderBrush" Value="#4DABF7" />
+    <Setter Property="BorderThickness" Value="2" />
+  </Style>
+  
+  <Style Selector="ComboBox:pointerover">
+    <Setter Property="BorderBrush" Value="#4A9BD1" />
+  </Style>
+  
+  <!-- Premium Modern CheckBox Styles -->
+  <Style Selector="CheckBox">
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="FontWeight" Value="Medium" />
+  </Style>
+  
+  <Style Selector="CheckBox /template/ Border">
+    <Setter Property="Background" Value="#242B3D" />
+    <Setter Property="BorderBrush" Value="#3D4D5C" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="4" />
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+        <BrushTransition Property="Background" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="CheckBox:checked /template/ Border">
+    <Setter Property="Background" Value="#4DABF7" />
+    <Setter Property="BorderBrush" Value="#4DABF7" />
+  </Style>
+  
+  <Style Selector="CheckBox:pointerover /template/ Border">
+    <Setter Property="BorderBrush" Value="#4A9BD1" />
+  </Style>
+  
+  <!-- Premium Modern RadioButton Styles -->
+  <Style Selector="RadioButton">
+    <Setter Property="FontSize" Value="14" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="FontWeight" Value="Medium" />
+  </Style>
+  
+  <Style Selector="RadioButton /template/ Ellipse">
+    <Setter Property="Fill" Value="#242B3D" />
+    <Setter Property="Stroke" Value="#3D4D5C" />
+    <Setter Property="StrokeThickness" Value="1" />
+  </Style>
+  
+  <Style Selector="RadioButton:checked /template/ Ellipse">
+    <Setter Property="Fill" Value="#4DABF7" />
+    <Setter Property="Stroke" Value="#4DABF7" />
+  </Style>
+  
+  <Style Selector="RadioButton:pointerover /template/ Ellipse">
+    <Setter Property="Stroke" Value="#4A9BD1" />
+  </Style>
+  
+  <!-- Premium Modern DataGrid Styles -->
+  <Style Selector="DataGrid">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#1A252F"/>
+            <GradientStop Offset="1" Color="#1E2936"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="BorderBrush" Value="#3D4D5C" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="RowBackground" Value="Transparent" />
+    <Setter Property="HorizontalGridLinesBrush" Value="#2A3441" />
+    <Setter Property="GridLinesVisibility" Value="Horizontal" />
+  </Style>
+  
+  <Style Selector="DataGridRow:selected">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#4DABF7"/>
+            <GradientStop Offset="1" Color="#136999"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Foreground" Value="#FFFFFF" />
+  </Style>
+  
+  <Style Selector="DataGridRow:pointerover">
+    <Setter Property="Background" Value="#2A3441" />
+  </Style>
+  
+  <Style Selector="DataGridColumnHeader">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#2A3441"/>
+            <GradientStop Offset="1" Color="#3D4B5C"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="FontWeight" Value="SemiBold"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Padding" Value="12,8"/>
+    <Setter Property="BorderBrush" Value="#3D4D5C"/>
+    <Setter Property="BorderThickness" Value="0,0,1,1"/>
+  </Style>
+  
+  <Style Selector="DataGridColumnHeader">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#2A3847"/>
+            <GradientStop Offset="1" Color="#324050"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="BorderBrush" Value="#4A9BD1" />
+  </Style>
+  
+  <!-- Premium Tooltip Styles -->
+  <Style Selector="ToolTip">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#1E293B"/>
+            <GradientStop Offset="1" Color="#334155"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="FontSize" Value="12"/>
+    <Setter Property="FontWeight" Value="Medium"/>
+    <Setter Property="Padding" Value="12,8"/>
+    <Setter Property="CornerRadius" Value="8"/>
+    <Setter Property="BorderBrush" Value="#4DABF7"/>
+    <Setter Property="BorderThickness" Value="1"/>
+  </Style>
+  
+  <!-- Premium Scrollbar Styles -->
+  <Style Selector="ScrollBar">
+    <Setter Property="Background" Value="Transparent"/>
+  </Style>
+  
+  <Style Selector="ScrollBar:vertical">
+    <Setter Property="Width" Value="12"/>
+  </Style>
+  
+  <Style Selector="ScrollBar:horizontal">
+    <Setter Property="Height" Value="12"/>
+  </Style>
+  
+  <Style Selector="ScrollBar /template/ Thumb">
+    <Setter Property="Background" Value="#4DABF7"/>
+    <Setter Property="CornerRadius" Value="6"/>
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="ScrollBar /template/ Thumb:pointerover">
+    <Setter Property="Background" Value="#339AF0"/>
+  </Style>
+  
+  <Style Selector="ScrollBar /template/ Thumb:pressed">
+    <Setter Property="Background" Value="#136999"/>
+  </Style>
+  
+  <!-- Premium Menu and Context Menu Styles -->
+  <Style Selector="MenuItem">
+    <Setter Property="Foreground" Value="#FFFFFF"/>
+    <Setter Property="Background" Value="Transparent"/>
+    <Setter Property="FontSize" Value="14"/>
+    <Setter Property="Padding" Value="12,8"/>
+    <Setter Property="Transitions">
+      <Transitions>
+        <BrushTransition Property="Background" Duration="0:0:0.2"/>
+      </Transitions>
+    </Setter>
+  </Style>
+  
+  <Style Selector="MenuItem:pointerover">
+    <Setter Property="Background" Value="#334155"/>
+  </Style>
+  
+  <Style Selector="MenuItem:selected">
+    <Setter Property="Background" Value="#4DABF7"/>
+  </Style>
+  
+  <Style Selector="Menu">
+    <Setter Property="Background">
+      <Setter.Value>
+        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+          <LinearGradientBrush.GradientStops>
+            <GradientStop Offset="0" Color="#1E293B"/>
+            <GradientStop Offset="1" Color="#334155"/>
+          </LinearGradientBrush.GradientStops>
+        </LinearGradientBrush>
+      </Setter.Value>
+    </Setter>
+    <Setter Property="CornerRadius" Value="8"/>
+    <Setter Property="BorderBrush" Value="#4DABF7"/>
+    <Setter Property="BorderThickness" Value="1"/>  </Style>  
+  <!-- Enhanced Focus Styles -->
+
+  <Style Selector="Button:focus-visible">
+    <Setter Property="BorderThickness" Value="2"/>
+    <Setter Property="BorderBrush" Value="#4DABF7"/>  </Style>
+
+  <Style Selector="TextBox:focus-visible">
+    <Setter Property="BorderThickness" Value="2"/>    <Setter Property="BorderBrush" Value="#4DABF7"/>
+  </Style>
+
+  <Style Selector="Button:pointerover">
+    <Setter Property="Background" Value="#1677CC"/>
+    <Setter Property="BorderBrush" Value="#136999"/>
+  </Style>
+
+	<!-- Window Styles -->
+	<Style Selector="Window">
+		<Setter Property="TransparencyLevelHint" Value="AcrylicBlur" />
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#0F1419"/>
+						<GradientStop Offset="0.3" Color="#1A1F2E"/>
+						<GradientStop Offset="0.7" Color="#1E2536"/>
+						<GradientStop Offset="1" Color="#242B3D"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="ExtendClientAreaToDecorationsHint" Value="True" />
+		<Setter Property="Icon" Value="/Assets/netw1re-logo.ico" />
+		<Setter Property="FontFamily" Value="/Assets/Fonts/Montserrat.ttf#Montserrat" />
+		<Setter Property="FontWeight" Value="Normal" />
+		<Setter Property="Foreground" Value="#FFFFFF" />
+	</Style>
+		<!-- Enhanced Typography Styles -->
+	<Style Selector="TextBlock.h1">
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="FontSize" Value="24"/>
+		<Setter Property="Foreground" Value="#FFFFFF"/>
+		<Setter Property="Margin" Value="0,0,0,16"/>
+		<Setter Property="LetterSpacing" Value="0.5"/>
+		<Setter Property="TextTrimming" Value="CharacterEllipsis"/>
+	</Style>
+	<Style Selector="TextBlock.h2">
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="FontSize" Value="20"/>
+		<Setter Property="Foreground" Value="#E8F4FD"/>
+		<Setter Property="Margin" Value="0,0,0,12"/>
+		<Setter Property="LetterSpacing" Value="0.3"/>
+	</Style>
+	<Style Selector="TextBlock.h3">
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="Foreground" Value="#E8F4FD"/>
+		<Setter Property="Margin" Value="0,0,0,8"/>
+	</Style>
+	<Style Selector="TextBlock.p">
+		<Setter Property="TextWrapping" Value="Wrap"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Foreground" Value="#E2E8F0"/>
+		<Setter Property="LineHeight" Value="1.6"/>
+		<Setter Property="Margin" Value="0,0,0,8"/>
+		<Setter Property="FontWeight" Value="Normal"/>
+	</Style>	<Style Selector="TextBlock.small">
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="Foreground" Value="#94A3B8"/>
+		<Setter Property="FontWeight" Value="Normal"/>
+	</Style>
+	<Style Selector="TextBlock.caption">
+		<Setter Property="FontSize" Value="11"/>
+		<Setter Property="Foreground" Value="#64748B"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="LetterSpacing" Value="1"/>
+	</Style>
+	
+	<!-- Enhanced Container Styles -->
+	<Style Selector="Border.label">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#2A3441"/>
+						<GradientStop Offset="0.5" Color="#34404F"/>
+						<GradientStop Offset="1" Color="#3E4B5D"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>		</Setter>
+		<Setter Property="Padding" Value="20,16,20,16" />
+		<Setter Property="CornerRadius" Value="12" />
+		<Setter Property="BorderBrush" Value="#4DABF7" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Transitions">
+			<Transitions>
+			</Transitions>
+		</Setter>
+	</Style>
+	<Style Selector="Border.label:pointerover">
+	</Style>
+	<Style Selector="Border.label > StackPanel > TextBlock">
+		<Setter Property="Foreground" Value="#FFFFFF" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="FontSize" Value="14" />
+	</Style>
+	
+	<Style Selector="Border.control-group">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#242B3D"/>
+						<GradientStop Offset="0.5" Color="#2A3247"/>
+						<GradientStop Offset="1" Color="#303951"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>		</Setter>
+		<Setter Property="Padding" Value="24,20,24,20" />
+		<Setter Property="CornerRadius" Value="16" />
+		<Setter Property="BorderBrush" Value="#3D4D5C" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="Transitions">
+			<Transitions>
+			</Transitions>
+		</Setter>
+	</Style>
+	<Style Selector="Border.control-group:pointerover">
+	</Style>
+	<Style Selector="TextBox:focus /template/ Border">
+		<Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+	</Style>
+	<Style Selector="ComboBox:focus /template/ Border">
+		<Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+	</Style>
+	<Style Selector="Button:focus">
+		<Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />	</Style>	<Style Selector="Button">
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="Foreground" Value="#FFFFFF" />
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#4DABF7"/>
+						<GradientStop Offset="0.5" Color="#339AF0"/>
+						<GradientStop Offset="1" Color="#136999"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>		</Setter>
+		<Setter Property="BorderBrush" Value="Transparent" />
+		<Setter Property="BorderThickness" Value="0" />
+		<Setter Property="CornerRadius" Value="8" />
+		<Setter Property="Padding" Value="20,12,20,12" />
+		<Setter Property="Transitions">
+			<Transitions>
+				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+				<BrushTransition Property="Background" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+	</Style><Style Selector="Button:pointerover">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>						<GradientStop Offset="0" Color="#5BB3FF"/>
+						<GradientStop Offset="0.5" Color="#3BA3F0"/>
+						<GradientStop Offset="1" Color="#1E7BB8"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="RenderTransform" Value="scale(1.02)" />
+	</Style>
+	<Style Selector="Button:pressed">
+		<Setter Property="RenderTransform" Value="scale(0.98)" />
+	</Style>
+	<Style Selector="CheckBox:checked /template/ Border">
+		<Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+	</Style>
+	<Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
+		<Setter Property="Background" Value="{Binding Theme.AccentColor}" />
+	</Style>
+	<Style Selector="RadioButton:checked /template/ Ellipse#CheckOuterEllipse">
+		<Setter Property="Fill" Value="{Binding Theme.AccentColor}" />
+	</Style>
+	<Style Selector="RadioButton:checked /template/ Border">
+		<Setter Property="BorderBrush" Value="{Binding Theme.AccentColor}" />
+	</Style>
+	<Style Selector="RadioButton:checked /template/ Ellipse">
+		<Setter Property="Stroke" Value="{Binding Theme.AccentColor}" />
+	</Style>	<Style Selector="StackPanel.infoPanel">
+		<Setter Property="Orientation" Value="Horizontal"/>
+		<Setter Property="Margin" Value="0,0,0,8"/>
+	</Style>
+	<Style Selector="StackPanel.infoPanel > TextBlock.label">
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="Foreground" Value="#FFFFFF"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="StackPanel.infoPanel > Rectangle.indicator">
+		<Setter Property="Margin" Value="0,0,12,0"/>
+	</Style>
+	<Style Selector="StackPanel.infoPanel > TextBlock.labelValue">
+		<Setter Property="FontWeight" Value="Normal"/>
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="Foreground" Value="#E2E8F0"/>
+		<Setter Property="Margin" Value="12,0,0,0"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+	</Style>
+	<Style Selector="TextBlock.title">
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="FontSize" Value="28"/>
+		<Setter Property="Foreground" Value="#FFFFFF"/>
+		<Setter Property="Margin" Value="0,16,0,16"/>
+	</Style>
+	<Style Selector="TextBlock.h1">
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="FontSize" Value="18"/>
+		<Setter Property="Foreground" Value="#FFFFFF"/>
+		<Setter Property="Margin" Value="0,0,0,12"/>
+	</Style>
+	<Style Selector="TextBlock.p">
+		<Setter Property="TextWrapping" Value="Wrap"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Foreground" Value="#E2E8F0"/>
+		<Setter Property="LineHeight" Value="1.5"/>
+	</Style>
+	<Style Selector="Border.wrapper">
+		<Setter Property="Padding" Value="15" />
+	</Style>
+	
+	<!-- Premium Modern TextBox Styles -->
+	<Style Selector="TextBox">
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="FontWeight" Value="Normal" />
+		<Setter Property="Foreground" Value="#FFFFFF" />
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#242B3D"/>
+						<GradientStop Offset="1" Color="#2A3247"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>		<Setter Property="BorderBrush" Value="#3D4D5C" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="CornerRadius" Value="8" />
+		<Setter Property="Padding" Value="16,12,16,12" />
+		<Setter Property="SelectionBrush" Value="#136999" />
+		<Setter Property="CaretBrush" Value="#4DABF7" />
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+	</Style>
+	<Style Selector="TextBox:focus">
+		<Setter Property="BorderBrush" Value="#4DABF7" />
+		<Setter Property="BorderThickness" Value="2" />
+	</Style>
+	<Style Selector="TextBox:pointerover">
+		<Setter Property="BorderBrush" Value="#4A9BD1" />
+	</Style>
+	
+	<!-- Premium Modern ComboBox Styles -->
+	<Style Selector="ComboBox">
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="FontWeight" Value="Normal" />
+		<Setter Property="Foreground" Value="#FFFFFF" />
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#242B3D"/>
+						<GradientStop Offset="1" Color="#2A3247"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>		<Setter Property="BorderBrush" Value="#3D4D5C" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="CornerRadius" Value="8" />
+		<Setter Property="Padding" Value="16,12,16,12" />
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+	</Style>
+	<Style Selector="ComboBox:focus">
+		<Setter Property="BorderBrush" Value="#4DABF7" />
+		<Setter Property="BorderThickness" Value="2" />
+	</Style>
+	<Style Selector="ComboBox:pointerover">
+		<Setter Property="BorderBrush" Value="#4A9BD1" />
+	</Style>
+	
+	<!-- Premium Modern CheckBox Styles -->
+	<Style Selector="CheckBox">
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="Foreground" Value="#FFFFFF" />
+		<Setter Property="FontWeight" Value="Medium" />
+	</Style>
+	<Style Selector="CheckBox /template/ Border">
+		<Setter Property="Background" Value="#242B3D" />
+		<Setter Property="BorderBrush" Value="#3D4D5C" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="CornerRadius" Value="4" />
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="BorderBrush" Duration="0:0:0.2"/>
+				<BrushTransition Property="Background" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+	</Style>
+	<Style Selector="CheckBox:checked /template/ Border">
+		<Setter Property="Background" Value="#4DABF7" />
+		<Setter Property="BorderBrush" Value="#4DABF7" />
+	</Style>
+	<Style Selector="CheckBox:pointerover /template/ Border">
+		<Setter Property="BorderBrush" Value="#4A9BD1" />
+	</Style>
+	
+	<!-- Premium Modern RadioButton Styles -->
+	<Style Selector="RadioButton">
+		<Setter Property="FontSize" Value="14" />
+		<Setter Property="Foreground" Value="#FFFFFF" />
+		<Setter Property="FontWeight" Value="Medium" />
+	</Style>
+	<Style Selector="RadioButton /template/ Ellipse">
+		<Setter Property="Fill" Value="#242B3D" />
+		<Setter Property="Stroke" Value="#3D4D5C" />
+		<Setter Property="StrokeThickness" Value="1" />
+	</Style>
+	<Style Selector="RadioButton:checked /template/ Ellipse">
+		<Setter Property="Fill" Value="#4DABF7" />
+		<Setter Property="Stroke" Value="#4DABF7" />
+	</Style>
+	<Style Selector="RadioButton:pointerover /template/ Ellipse">
+		<Setter Property="Stroke" Value="#4A9BD1" />
+	</Style>
+	
+	<!-- Premium Modern DataGrid Styles -->
+	<Style Selector="DataGrid">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#1A252F"/>
+						<GradientStop Offset="1" Color="#1E2936"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>		<Setter Property="Foreground" Value="#FFFFFF" />
+		<Setter Property="BorderBrush" Value="#3D4D5C" />
+		<Setter Property="BorderThickness" Value="1" />
+		<Setter Property="CornerRadius" Value="12" />
+		<Setter Property="RowBackground" Value="Transparent" />
+		<Setter Property="HorizontalGridLinesBrush" Value="#2A3441" />
+		<Setter Property="GridLinesVisibility" Value="Horizontal" />
+	</Style>
+	<Style Selector="DataGridRow:selected">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#4DABF7"/>
+						<GradientStop Offset="1" Color="#136999"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Foreground" Value="#FFFFFF" />
+	</Style>
+	<Style Selector="DataGridRow:pointerover">
+		<Setter Property="Background" Value="#2A3441" />
+	</Style>
+	<Style Selector="DataGridColumnHeader">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#2A3441"/>
+						<GradientStop Offset="1" Color="#3D4B5C"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Foreground" Value="#FFFFFF"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Padding" Value="12,8"/>
+		<Setter Property="BorderBrush" Value="#3D4D5C"/>
+		<Setter Property="BorderThickness" Value="0,0,1,1"/>
+	</Style>
+	<Style Selector="DataGridColumnHeader">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#2A3847"/>
+						<GradientStop Offset="1" Color="#324050"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Foreground" Value="#FFFFFF" />
+		<Setter Property="FontWeight" Value="SemiBold" />
+		<Setter Property="BorderBrush" Value="#4A9BD1" />
+	</Style>
+	
+	<!-- Premium Tooltip Styles -->
+	<Style Selector="ToolTip">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>
+						<GradientStop Offset="0" Color="#1E293B"/>
+						<GradientStop Offset="1" Color="#334155"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>		<Setter Property="Foreground" Value="#FFFFFF"/>
+		<Setter Property="FontSize" Value="12"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="Padding" Value="12,8"/>
+		<Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="BorderBrush" Value="#4DABF7"/>
+		<Setter Property="BorderThickness" Value="1"/>
+	</Style>
+	
+	<!-- Premium Scrollbar Styles -->
+	<Style Selector="ScrollBar">
+		<Setter Property="Background" Value="Transparent"/>
+	</Style>
+	<Style Selector="ScrollBar:vertical">
+		<Setter Property="Width" Value="12"/>
+	</Style>
+	<Style Selector="ScrollBar:horizontal">
+		<Setter Property="Height" Value="12"/>
+	</Style>
+	<Style Selector="ScrollBar /template/ Thumb">
+		<Setter Property="Background" Value="#4DABF7"/>
+		<Setter Property="CornerRadius" Value="6"/>
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="Background" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+	</Style>
+	<Style Selector="ScrollBar /template/ Thumb:pointerover">
+		<Setter Property="Background" Value="#339AF0"/>
+	</Style>
+	<Style Selector="ScrollBar /template/ Thumb:pressed">
+		<Setter Property="Background" Value="#136999"/>
+	</Style>
+	
+	<!-- Premium Menu and Context Menu Styles -->
+	<Style Selector="MenuItem">
+		<Setter Property="Foreground" Value="#FFFFFF"/>
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Padding" Value="12,8"/>
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="Background" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+	</Style>
+	<Style Selector="MenuItem:pointerover">
+		<Setter Property="Background" Value="#334155"/>
+	</Style>
+	<Style Selector="MenuItem:selected">
+		<Setter Property="Background" Value="#4DABF7"/>
+	</Style>
+	<Style Selector="Menu">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+					<LinearGradientBrush.GradientStops>						<GradientStop Offset="0" Color="#1E293B"/>
+						<GradientStop Offset="1" Color="#334155"/>
+					</LinearGradientBrush.GradientStops>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter><Setter Property="CornerRadius" Value="8"/>
+		<Setter Property="BorderBrush" Value="#4DABF7"/>
+		<Setter Property="BorderThickness" Value="1"/>
+	</Style>	<!-- Enhanced Focus Styles -->
+	<Style Selector="Button:focus-visible">
+		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="BorderBrush" Value="#4DABF7"/>
+	</Style>
+
+	<Style Selector="TextBox:focus-visible">
+		<Setter Property="BorderThickness" Value="2"/>
+		<Setter Property="BorderBrush" Value="#4DABF7"/>
+	</Style>
+</Styles>
+
+
+

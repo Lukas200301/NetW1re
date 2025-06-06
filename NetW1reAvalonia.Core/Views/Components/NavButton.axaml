@@ -1,0 +1,197 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cmpts="using:NetW1reAvalonia.Core.Views.Components"
+		xmlns:convos="using:NetW1reAvalonia.Core.Converters">
+	<Design.PreviewWith>
+		<StackPanel Orientation="Horizontal" Spacing="2">
+			<cmpts:NavButton />
+			<cmpts:NavButton IsActive="True" />
+			<cmpts:NavButton />
+		</StackPanel>
+	</Design.PreviewWith>
+	<Style Selector="cmpts|NavButton Border">
+		<Setter Property="Background" Value="Transparent"/>
+		<Setter Property="BorderBrush" Value="Transparent"/>
+		<Setter Property="BorderThickness" Value="0,0,0,3"/>
+		<Setter Property="CornerRadius" Value="8,8,0,0"/>
+		<Setter Property="Margin" Value="2,0"/>
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="Background" Duration="0:0:0.3"/>
+				<BrushTransition Property="BorderBrush" Duration="0:0:0.3"/>
+				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+				<ThicknessTransition Property="Margin" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+	</Style>
+
+	<Style Selector="cmpts|NavButton Border:pointerover">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+					<GradientStop Offset="0" Color="#30FFFFFF"/>
+					<GradientStop Offset="0.5" Color="#20FFFFFF"/>
+					<GradientStop Offset="1" Color="#10FFFFFF"/>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="BorderBrush">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+					<GradientStop Offset="0" Color="#4DABF7"/>
+					<GradientStop Offset="0.5" Color="#74C0FC"/>
+					<GradientStop Offset="1" Color="#4DABF7"/>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="RenderTransform">
+			<Setter.Value>
+				<TranslateTransform Y="-2"/>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Margin" Value="0,0"/>
+	</Style>	
+	<Style Selector="cmpts|NavButton[IsActive=true] Border">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+					<GradientStop Offset="0" Color="#1971C2"/>
+					<GradientStop Offset="0.5" Color="#1864AB"/>
+					<GradientStop Offset="1" Color="#155299"/>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="BorderBrush">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+					<GradientStop Offset="0" Color="#0C4A7A"/>
+					<GradientStop Offset="0.5" Color="#1971C2"/>
+					<GradientStop Offset="1" Color="#0C4A7A"/>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="BorderThickness" Value="0,0,0,4"/>
+		<Setter Property="Margin" Value="0,0"/>
+	</Style>
+
+	<Style Selector="cmpts|NavButton[IsActive=true] Border:pointerover">
+		<Setter Property="Background">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+					<GradientStop Offset="0" Color="#50FFFFFF"/>
+					<GradientStop Offset="0.3" Color="#40FFFFFF"/>
+					<GradientStop Offset="0.7" Color="#30FFFFFF"/>
+					<GradientStop Offset="1" Color="#20FFFFFF"/>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="BorderBrush">
+			<Setter.Value>
+				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
+					<GradientStop Offset="0" Color="#74C0FC"/>
+					<GradientStop Offset="0.5" Color="#A5D8FF"/>
+					<GradientStop Offset="1" Color="#74C0FC"/>
+				</LinearGradientBrush>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="RenderTransform">
+			<Setter.Value>
+				<TranslateTransform Y="-1"/>
+			</Setter.Value>
+		</Setter>
+	</Style>
+
+	<Style Selector="cmpts|NavButton Border:pressed">
+		<Setter Property="RenderTransform">
+			<Setter.Value>
+				<TranslateTransform Y="0"/>
+			</Setter.Value>
+		</Setter>
+		<Setter Property="Margin" Value="2,1,2,0"/>
+	</Style>	
+	<Style Selector="cmpts|NavButton TextBlock">
+		<Setter Property="Foreground" Value="#B0FFFFFF"/>
+		<Setter Property="FontWeight" Value="Medium"/>
+		<Setter Property="LetterSpacing" Value="0.3"/>
+		<Setter Property="Transitions">
+			<Transitions>
+				<BrushTransition Property="Foreground" Duration="0:0:0.3"/>
+			</Transitions>
+		</Setter>
+	</Style>
+
+	<Style Selector="cmpts|NavButton:pointerover TextBlock">
+		<Setter Property="Foreground" Value="#FFFFFF"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+	</Style>
+
+	<Style Selector="cmpts|NavButton[IsActive=true] TextBlock">
+		<Setter Property="Foreground" Value="#FFFFFF"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+	</Style>
+
+	<Style Selector="cmpts|NavButton Image">
+		<Setter Property="Opacity" Value="0.8"/>
+		<Setter Property="Transitions">
+			<Transitions>
+				<DoubleTransition Property="Opacity" Duration="0:0:0.3"/>
+				<TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2"/>
+			</Transitions>
+		</Setter>
+	</Style>
+	<Style Selector="cmpts|NavButton:pointerover Image">
+		<Setter Property="Opacity" Value="1.0"/>
+		<Setter Property="RenderTransform" Value="scale(1.15)"/>
+	</Style>
+
+	<Style Selector="cmpts|NavButton[IsActive=true] Image">
+		<Setter Property="Opacity" Value="1.0"/>
+		<Setter Property="RenderTransform" Value="scale(1.1)"/>
+	</Style>
+	<Style Selector="cmpts|NavButton">
+		<Setter Property="Template">
+			<ControlTemplate>				<Border
+					CornerRadius="12,12,0,0"
+					MinWidth="120"
+					Height="60"
+					Margin="1,0"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch">					<Border.Effect>
+						<DropShadowEffect Color="#40000000" BlurRadius="8" OffsetX="0" OffsetY="2"/>
+					</Border.Effect>					<Button
+						Background="Transparent"
+						BorderBrush="Transparent"
+						BorderThickness="0"
+						Command="{TemplateBinding Command}"
+						CommandParameter="{TemplateBinding CommandParameter}"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						HorizontalContentAlignment="Center"
+						VerticalContentAlignment="Center"
+						Padding="12,8"
+						ToolTip.Placement="Right">
+						<StackPanel Orientation="Vertical" Spacing="4">
+							<Image
+							   Source="{TemplateBinding Icon, Converter={x:Static convos:ImageConverters.FromPath}}"
+							   Width="20"
+							   Height="20"
+							   VerticalAlignment="Center"
+							   HorizontalAlignment="Center"/>
+							<TextBlock
+							   Text="{TemplateBinding Text}"
+							   FontSize="10"
+							   FontWeight="Medium"
+							   VerticalAlignment="Center"
+							   HorizontalAlignment="Center"
+							   TextWrapping="NoWrap"
+							   LetterSpacing="0.2"/>
+						</StackPanel>
+					</Button>
+				</Border>
+			</ControlTemplate>
+		</Setter>
+	</Style>
+</Styles>
+
+
+

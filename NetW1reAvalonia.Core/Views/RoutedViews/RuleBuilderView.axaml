@@ -1,0 +1,245 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:i="clr-namespace:Avalonia.Xaml.Interactivity;assembly=Avalonia.Xaml.Interactivity"
+		     xmlns:ia="clr-namespace:Avalonia.Xaml.Interactions.Core;assembly=Avalonia.Xaml.Interactions"
+			 xmlns:vm="using:NetW1reAvalonia.Core.ViewModels.RoutedViewModels"
+			 xmlns:ru="using:NetW1reAvalonia.Core.Rules"
+			 xmlns:convos="using:NetW1reAvalonia.Core.Converters"
+			 xmlns:cmpts="using:NetW1reAvalonia.Core.Views.Components"
+			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+			 x:Class="NetW1reAvalonia.Core.Views.RoutedViews.RuleBuilderView">
+
+	<Design.DataContext>
+		<vm:RuleBuilderViewModel />
+	</Design.DataContext>	<UserControl.Styles>
+		<Style Selector="TextBlock">
+			<Setter Property="Foreground" Value="#E8F4FD"/>
+		</Style>
+		<Style Selector="Border.ruleItem">
+			<Setter Property="CornerRadius" Value="8"/>
+			<Setter Property="HorizontalAlignment" Value="Stretch"/>
+			<Setter Property="Margin" Value="0,4"/>
+		</Style>
+		<Style Selector="Border.ruleItem_Inner">
+			<Setter Property="Padding" Value="12"/>
+		</Style>
+		<Style Selector="Border.ruleItem_Block > DockPanel > Rectangle">
+			<Setter Property="Fill" Value="#ff6b6b"/>
+		</Style>
+		<Style Selector="Border.ruleItem_Redirect > DockPanel > Rectangle">
+			<Setter Property="Fill" Value="#ffd93d"/>
+		</Style>
+		<Style Selector="Border.ruleItem_Limit > DockPanel > Rectangle">
+			<Setter Property="Fill" Value="#136999"/>
+		</Style>
+		<Style Selector="Border.ruleItem_Attribute">
+			<Setter Property="Padding" Value="8,4"/>
+			<Setter Property="CornerRadius" Value="6"/>
+			<Setter Property="Background" Value="#136999"/>
+			<Setter Property="HorizontalAlignment" Value="Left"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="Margin" Value="0,0,8,0"/>
+			<Setter Property="BorderBrush" Value="#20FFFFFF"/>
+			<Setter Property="BorderThickness" Value="1"/>
+		</Style>		<Style Selector="Border.ruleItem_Attribute > TextBlock">
+			<Setter Property="Foreground" Value="#FFFFFF"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+		</Style>		<Style Selector="Border.ruleItem_Attribute_Multiple > TextBlock:nth-child(2)">
+			<Setter Property="Foreground" Value="#FFFFFF"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+		</Style><Style Selector="TextBlock.ruleItem_Target">
+			<Setter Property="FontSize" Value="18"/>
+			<Setter Property="FontWeight" Value="Bold"/>
+			<Setter Property="Foreground" Value="#FFFFFF"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="Margin" Value="0,0,12,0"/>
+		</Style>
+		<Style Selector="Image.ruleItem_Status">
+			<Setter Property="Width" Value="24"/>
+			<Setter Property="Height" Value="24"/>
+			<Setter Property="HorizontalAlignment" Value="Right"/>
+		</Style>
+		<Style Selector="cmpts|GenericIconButton.control_Add:pointerover">
+			<Setter Property="Background" Value="#28a745"/>
+		</Style>
+		<Style Selector="cmpts|GenericIconButton.control_Edit:pointerover">
+			<Setter Property="Background" Value="#fd7e14"/>
+		</Style>
+		<Style Selector="cmpts|GenericIconButton.control_Remove:pointerover">
+			<Setter Property="Background" Value="#dc3545"/>
+		</Style>
+		<Style Selector="cmpts|GenericIconButton.control_Move:pointerover">
+			<Setter Property="Background" Value="#136999"/>
+		</Style>
+	</UserControl.Styles>
+
+	<Border Classes="wrapper">
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*" />
+			</Grid.RowDefinitions>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="3*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<ListBox Name="RuleList"
+					 CornerRadius="5" Grid.Row="0" Grid.Column="0"
+					 ItemsSource="{Binding Rules}"
+					 SelectionMode="Single"
+					 SelectedItem="{Binding SelectedRule, Mode=TwoWay}">
+				<ListBox.Styles>
+					<Style Selector="ListBoxItem">
+						<Setter Property="Padding" Value="0"/>
+						<Setter Property="Margin" Value="0,0,0,4"/>
+					</Style>					<Style Selector="ListBoxItem:focus /template/ ContentPresenter">
+						<Setter Property="Background" Value="#136999"/>
+					</Style>
+					<Style Selector="ListBoxItem[IsFocused=False][IsSelected=True] /template/ ContentPresenter">
+						<Setter Property="Background" Value="#136999"/>
+					</Style>
+				</ListBox.Styles>
+				<ListBox.ItemTemplate>
+					<DataTemplate DataType="ru:RuleBase">
+						<Border Classes="ruleItem"
+								Classes.ruleItem_Block="{Binding Action, Converter={x:Static convos:RuleActionConverter.Instance}, ConverterParameter=Block}"
+								Classes.ruleItem_Redirect="{Binding Action, Converter={x:Static convos:RuleActionConverter.Instance}, ConverterParameter=Redirect}"
+								Classes.ruleItem_Limit="{Binding Action, Converter={x:Static convos:RuleActionConverter.Instance}, ConverterParameter=Limit}">
+							<DockPanel HorizontalAlignment="Stretch">
+								<Rectangle Width="10" Margin="0,0,10,0" VerticalAlignment="Stretch"/>
+								<Border Classes="ruleItem_Inner">
+									<DockPanel HorizontalAlignment="Stretch"
+											   VerticalAlignment="Stretch">
+										<Border Classes="ruleItem_Attribute">
+											<TextBlock Text="{Binding Order}"/>
+										</Border>
+										<TextBlock MaxWidth="250"
+												   Classes="ruleItem_Target"
+												   Text="{Binding Target}"
+												   TextTrimming="CharacterEllipsis"
+												   ToolTip.Tip="{Binding Target}">
+										</TextBlock>
+										<Border Classes="ruleItem_Attribute">
+											<TextBlock Text="{Binding SourceValue,Converter={x:Static convos:RuleSourceValueToStringConverter.Instance}}"/>
+										</Border>
+										<Border Classes="ruleItem_Attribute" IsVisible="{Binding IsRegex}">
+											<TextBlock Text="Regex"/>
+										</Border>
+										<Border Classes="ruleItem_Attribute" IsVisible="{Binding Upload, FallbackValue=false, Converter={x:Static convos:NumberConverters.Comparison}, ConverterParameter='> 0'}">
+											<StackPanel Orientation="Horizontal" Spacing="5">
+												<TextBlock Text="{Binding Upload}"/>
+												<TextBlock Text="Kb/s"/>
+											</StackPanel>
+										</Border>
+										<Border Classes="ruleItem_Attribute" IsVisible="{Binding Download, FallbackValue=false, Converter={x:Static convos:NumberConverters.Comparison}, ConverterParameter='> 0'}">
+											<StackPanel Orientation="Horizontal" Spacing="5">
+												<TextBlock Text="{Binding Download}"/>
+												<TextBlock Text="Kb/s"/>
+											</StackPanel>
+										</Border>
+										<Image Classes="ruleItem_Status" Source="{Binding Active, Converter={x:Static convos:RuleStatusToImageConverter.Instance}}"/>
+									</DockPanel>
+								</Border>
+							</DockPanel>
+						</Border>
+					</DataTemplate>
+				</ListBox.ItemTemplate>
+			</ListBox>
+			<Border Grid.Row="0"
+					Grid.Column="1"
+					HorizontalAlignment="Stretch"
+					VerticalAlignment="Stretch"
+					Padding="10,0,0,0">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="auto"/>
+						<RowDefinition Height="auto"/>
+						<RowDefinition Height="auto"/>
+						<RowDefinition Height="auto"/>
+						<RowDefinition Height="auto"/>
+						<RowDefinition Height="auto"/>
+						<RowDefinition Height="*"/>
+						<RowDefinition Height="auto"/>
+					</Grid.RowDefinitions>					<cmpts:GenericIconButton Command="{Binding AddRule}" Classes="ruleBuilder_Control control_Add" Grid.Column="0" Grid.Row="0" Text="Add" Icon="Assets/Misc/add.png">
+						<ToolTip.Tip>
+							<StackPanel>
+								<TextBlock Classes="h1">Add New Rule</TextBlock>
+								<TextBlock Classes="p">
+									Create a new rule to automatically manage devices based on specific criteria such as MAC address, device name, or manufacturer.
+								</TextBlock>
+							</StackPanel>
+						</ToolTip.Tip>
+					</cmpts:GenericIconButton>
+					<cmpts:GenericIconButton Command="{Binding UpdateRule}" Classes="ruleBuilder_Control control_Edit" Grid.Column="0" Grid.Row="1" Text="Edit" Icon="Assets/Misc/edit.png">
+						<ToolTip.Tip>
+							<StackPanel>
+								<TextBlock Classes="h1">Edit Selected Rule</TextBlock>
+								<TextBlock Classes="p">
+									Modify the selected rule's conditions and actions. Select a rule from the list first.
+								</TextBlock>
+							</StackPanel>
+						</ToolTip.Tip>
+					</cmpts:GenericIconButton>
+					<cmpts:GenericIconButton Command="{Binding RemoveRule}" Classes="ruleBuilder_Control control_Remove" Grid.Column="0" Grid.Row="2" Text="Remove" Icon="Assets/Misc/remove.png">
+						<ToolTip.Tip>
+							<StackPanel>
+								<TextBlock Classes="h1">Remove Selected Rule</TextBlock>
+								<TextBlock Classes="p">
+									Delete the selected rule permanently. This action cannot be undone.
+								</TextBlock>
+							</StackPanel>
+						</ToolTip.Tip>
+					</cmpts:GenericIconButton>
+					<Separator Grid.Column="0" Grid.Row="3" Background="Gray" Height="2" Width="90" Margin="0,5,0,5" CornerRadius="5" HorizontalAlignment="Stretch"/>
+					<cmpts:GenericIconButton Command="{Binding MoveUp}" Classes="ruleBuilder_Control control_Move" Grid.Column="0" Grid.Row="4" Text="Move Up" Icon="Assets/Misc/up.png">
+						<ToolTip.Tip>
+							<StackPanel>
+								<TextBlock Classes="h1">Move Rule Up</TextBlock>
+								<TextBlock Classes="p">
+									Increase the priority of the selected rule. Rules with higher priority (lower position) are applied first.
+								</TextBlock>
+							</StackPanel>
+						</ToolTip.Tip>
+					</cmpts:GenericIconButton>
+					<cmpts:GenericIconButton Command="{Binding MoveDown}" Classes="ruleBuilder_Control control_Move" Grid.Column="0" Grid.Row="5" Text="Move Down" Icon="Assets/Misc/down.png">
+						<ToolTip.Tip>
+							<StackPanel>
+								<TextBlock Classes="h1">Move Rule Down</TextBlock>
+								<TextBlock Classes="p">
+									Decrease the priority of the selected rule. Rules applied later take precedence over earlier ones for the same device.
+								</TextBlock>
+							</StackPanel>
+						</ToolTip.Tip>
+					</cmpts:GenericIconButton><Border Grid.Column="0" Grid.Row="6"
+							CornerRadius="8"
+							Padding="12"
+							BorderBrush="#136999"
+							BorderThickness="2"
+							Background="#10136999"
+							VerticalAlignment="Bottom">
+						<TextBlock Text="Rules are applied based on order. I.e. Last rule to be applied, takes precedence over the others that match the same criteria."
+								   TextWrapping="WrapWithOverflow"
+								   FontWeight="SemiBold"/>
+					</Border>
+					<Border Grid.Column="0" Grid.Row="7"
+							CornerRadius="5"
+							Padding="5"
+							Margin="0,5,0,0"
+							BorderBrush="Red"
+							BorderThickness="2"
+							VerticalAlignment="Bottom">
+						<TextBlock Text="You can't apply rules to your own device or the gateway."
+								   TextWrapping="WrapWithOverflow"/>
+					</Border>
+				</Grid>
+			</Border>
+		</Grid>
+	</Border>
+</UserControl>
+
+
+

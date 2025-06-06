@@ -1,0 +1,94 @@
+name: .NET Core Desktop (Windows)
+
+on: 
+  push:
+    tags:
+    - '*'
+  workflow_dispatch:
+    
+    
+jobs:
+
+  build-test-publish:
+
+    strategy:
+      matrix:
+        configuration: [Release]
+
+    runs-on: windows-latest
+    permissions:
+      contents: write
+
+  env:
+    Solution_Name: NetW1reAvalonia.sln                  # Replace with your solution name, i.e. MyWpfApp.sln.
+    Windows_Project: NetW1reAvalonia.Windows.csproj
+      Test_Project_Path: NetW1re.Tests.csproj             # Replace with the path to your test project, i.e. MyWpfApp.Tests\MyWpfApp.Tests.csproj.
+      Release_Version: ${{ github.ref_name }}
+      File_Version: 0
+      Assembly_Version: 0
+      
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    # Install the .NET Core workload
+    - name: Install .NET Core
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 7.0.x
+
+    # Add  MSBuild to the PATH: https://github.com/microsoft/setup-msbuild
+    - name: Setup MSBuild.exe
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    # Restore the application to populate the obj folder with RuntimeIdentifiers
+    - name: Restore the application
+      run: dotnet restore $Windows_Project
+      working-directory: NetW1reAvalonia.Windows
+      env:
+        Configuration: ${{ matrix.configuration }}
+
+    # Execute all unit tests in the solution
+    - name: Execute unit tests
+      run: dotnet test $Test_Project_Path --no-restore
+      working-directory: NetW1re.Tests
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v0
+      with:
+        versionSpec: '5.x'
+      
+    # - name: Set assembly version environment variables
+    #   if: contains(env.Release_Version, '-')
+    #   run: |
+    #     $AssemblyVersion=$env:Release_Version.split('-')[0]
+    #     $FileVersion=$env:Release_Version.split('-')[0]
+    #     echo "Assembly_Version=$AssemblyVersion" >> $env:GITHUB_ENV
+    #     echo "File_Version=$FileVersion" >> $env:GITHUB_ENV
+
+    - name: Update assembly version with GitVersion
+      run: dotnet-gitversion /updateprojectfiles
+    
+    # Publish application
+    - name: Publish the application
+      run: dotnet publish $Windows_Project --no-restore --output ../Output.Windows --runtime win10-x86 --self-contained false /p:DebugType=None /p:DebugSymbols=false
+      working-directory: NetW1reAvalonia.Windows
+      env:
+        Configuration: ${{ matrix.configuration }}
+    
+    - name: Install InnoSetup
+      uses: crazy-max/ghaction-chocolatey@v2
+      with:
+        args: install InnoSetup
+
+    - name: Package application
+      run: iscc NetW1reSetupScript.Windows.iss
+    
+    - name: Create a release with a setup file
+      uses: ncipollo/release-action@v1
+      with:
+        artifacts: "InstallerOutput/NetW1reSetup.exe"
+        skipIfReleaseExists: true
+        
