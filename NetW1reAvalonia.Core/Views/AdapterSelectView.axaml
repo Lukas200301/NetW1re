@@ -90,7 +90,7 @@
 							VerticalContentAlignment="Center"
 							Content="Quit"
 							Command="{Binding Exit}"
-							Background="Red"
+							Background="#F85149"
 							CornerRadius="5,0,0,5"/>
 					<Button Name="Ok"
 							Grid.Column="1"
@@ -100,7 +100,7 @@
                             HorizontalContentAlignment="Center"
 							VerticalContentAlignment="Center"
                             Command="{Binding Accept}"
-							Background="Green"
+							Background="#3FB950"
 							CornerRadius="0,5,5,0"/>
 				</Grid>
 			</Grid>
@@ -113,7 +113,7 @@
 					HorizontalAlignment="Center"
 					Width="60">
 				<TextBlock Classes="label" FontSize="40" Text="Net"/>
-				<TextBlock Classes="label" FontSize="40" Foreground="#136999" Text="W1re"/>
+				<TextBlock Classes="label" FontSize="40" Foreground="#2F88EB" Text="W1re"/>
 			</StackPanel>
 		</Border>
 	</Grid>

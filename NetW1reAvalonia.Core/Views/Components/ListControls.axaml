@@ -10,76 +10,13 @@
 	<Design.DataContext>
 		<viewModels:HomeViewModel />
 	</Design.DataContext>	<UserControl.Styles>
-		<Style Selector="cmpts|GenericIconButton">
-			<Setter Property="Background">
-				<Setter.Value>
-					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-						<GradientStop Offset="0" Color="#2A3142"/>
-						<GradientStop Offset="0.5" Color="#303951"/>
-						<GradientStop Offset="1" Color="#243142"/>
-					</LinearGradientBrush>
-				</Setter.Value>
-			</Setter>
-			<Setter Property="BorderBrush" Value="#4DABF7"/>
-			<Setter Property="BorderThickness" Value="1"/>
-			<Setter Property="CornerRadius" Value="8"/>
-			<Setter Property="Margin" Value="4"/>
-			<Setter Property="Padding" Value="12,8"/>
-		</Style>
-		<Style Selector="cmpts|GenericIconButton:pointerover">
-			<Setter Property="Background">
-				<Setter.Value>
-					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-						<GradientStop Offset="0" Color="#303951"/>
-						<GradientStop Offset="0.5" Color="#3A4661"/>
-						<GradientStop Offset="1" Color="#2A3142"/>
-					</LinearGradientBrush>
-				</Setter.Value>
-			</Setter>
-			<Setter Property="BorderBrush" Value="#74C0FC"/>
-		</Style>
 		<Style Selector="CheckBox">
-			<Setter Property="Foreground" Value="#FFFFFF"/>
-			<Setter Property="FontWeight" Value="SemiBold"/>
-			<Setter Property="FontSize" Value="14"/>
-			<Setter Property="Margin" Value="8,0"/>
-			<Setter Property="Padding" Value="8,4"/>
+			<Setter Property="Margin" Value="4,0"/>
 		</Style>
-		<Style Selector="CheckBox /template/ Border#NormalRectangle">
-			<Setter Property="Background" Value="#2A3142"/>
-			<Setter Property="BorderBrush" Value="#4DABF7"/>
-			<Setter Property="BorderThickness" Value="2"/>
-			<Setter Property="CornerRadius" Value="6"/>
-		</Style>
-		<Style Selector="CheckBox:checked /template/ Border#NormalRectangle">
-			<Setter Property="Background" Value="#4DABF7"/>
-			<Setter Property="BorderBrush" Value="#74C0FC"/>
-		</Style>
-		<Style Selector="CheckBox:pointerover /template/ Border#NormalRectangle">
-			<Setter Property="BorderBrush" Value="#74C0FC"/>
-			<Setter Property="Background" Value="#303951"/>
-		</Style>
-		<Style Selector="CheckBox:checked:pointerover /template/ Border#NormalRectangle">
-			<Setter Property="Background" Value="#74C0FC"/>
-		</Style>
-	</UserControl.Styles>	<Border Classes="control-group" Padding="20" BorderThickness="2" CornerRadius="12">
-		<Border.Background>
-			<LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-				<GradientStop Offset="0" Color="#1E2A3A"/>
-				<GradientStop Offset="1" Color="#243142"/>
-			</LinearGradientBrush>
-		</Border.Background>
-		<Border.BorderBrush>
-			<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,0%">
-				<GradientStop Offset="0" Color="#4DABF7"/>
-				<GradientStop Offset="0.5" Color="#74C0FC"/>
-				<GradientStop Offset="1" Color="#4DABF7"/>
-			</LinearGradientBrush>
-		</Border.BorderBrush>		<Border.Effect>
-			<DropShadowEffect Color="#40000000" BlurRadius="12" OffsetX="0" OffsetY="4"/>
-		</Border.Effect><Grid ColumnDefinitions="*,*" RowDefinitions="Auto">
+	</UserControl.Styles>	<Border Classes="control-group" Padding="18,14">
+		<Grid ColumnDefinitions="*,*" RowDefinitions="Auto">
 			<StackPanel Grid.Column="0" Orientation="Horizontal"
-						Spacing="20"
+						Spacing="12"
 						HorizontalAlignment="Left"
 						VerticalAlignment="Center">
 				<cmpts:GenericIconButton Name="Scan"

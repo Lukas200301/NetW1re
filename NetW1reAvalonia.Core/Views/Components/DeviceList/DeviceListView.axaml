@@ -17,55 +17,9 @@
 		<convos:ListTypeToIconConverter x:Key="TypeToIconConv" />
 		<convos:PhysicalAddressToStringConverter x:Key="MacToStringConv" />
 		<convos:IpAddressToStringConverter x:Key="IpToStringConv" />
-	</UserControl.Resources>	<UserControl.Styles>		<Style Selector="DataGrid#DeviceList DataGridRow:selected /template/ Rectangle#BackgroundRectangle">
-			<Setter Property="Fill">
-				<Setter.Value>
-					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-						<GradientStop Offset="0" Color="#4DABF7"/>
-						<GradientStop Offset="0.5" Color="#339AF0"/>
-						<GradientStop Offset="1" Color="#136999"/>
-					</LinearGradientBrush>
-				</Setter.Value>
-			</Setter>
-		</Style>
-		<Style Selector="DataGrid#DeviceList DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
-			<Setter Property="Fill" Value="#334155" />
-		</Style>		<Style Selector="DataGridColumnHeader">
-			<Setter Property="Background">
-				<Setter.Value>
-					<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-						<GradientStop Offset="0" Color="#334155"/>
-						<GradientStop Offset="1" Color="#475569"/>
-					</LinearGradientBrush>
-				</Setter.Value>
-			</Setter>
-			<Setter Property="Foreground" Value="#FFFFFF"/>
-			<Setter Property="FontWeight" Value="Bold"/>
-			<Setter Property="FontSize" Value="14"/>
-			<Setter Property="Padding" Value="16,12"/>
-			<Setter Property="BorderBrush" Value="#3D4D5C"/>
-			<Setter Property="BorderThickness" Value="0,0,1,1"/>		</Style>
-	<Style Selector="DataGrid">
-		<Setter Property="GridLinesVisibility" Value="Horizontal"/>
-		<Setter Property="HorizontalGridLinesBrush" Value="#334155"/>
-		<Setter Property="RowBackground" Value="Transparent"/>
-		<Setter Property="Background">
-			<Setter.Value>
-				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-					<GradientStop Offset="0" Color="#1E293B"/>
-					<GradientStop Offset="1" Color="#242B3D"/>
-				</LinearGradientBrush>
-			</Setter.Value>
-		</Setter>		<Setter Property="CornerRadius" Value="12"/>
-		<Setter Property="BorderThickness" Value="1"/>
-		<Setter Property="BorderBrush" Value="#3D4D5C"/>
-	</Style>
-		<Style Selector="Separator.row-status">
-			<Setter Property="Height" Value="5" />
-			<Setter Property="Background" Value="red" />
-		</Style>
+	</UserControl.Resources>	<UserControl.Styles>
 		<Style Selector="Rectangle.statusIndicator">
-			<Setter Property="Width" Value="12"/>
+			<Setter Property="Width" Value="4"/>
 			<Setter Property="HorizontalAlignment" Value="Left"/>
 			<Setter Property="VerticalAlignment" Value="Stretch"/>
 			<Setter Property="RadiusX" Value="2"/>
@@ -90,9 +44,9 @@
 					<DataGridTemplateColumn.CellTemplate>
 						<DataTemplate DataType="models:Device">
 							<Panel HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="2">
-								<Rectangle Classes="statusIndicator" IsVisible="{Binding Blocked, Mode=OneWay}" Fill="#DC3545" />
-								<Rectangle Classes="statusIndicator" IsVisible="{Binding Redirected, Mode=OneWay}" Fill="#FFC107" />
-								<Rectangle Classes="statusIndicator" Fill="#136999">
+								<Rectangle Classes="statusIndicator" IsVisible="{Binding Blocked, Mode=OneWay}" Fill="#F85149" />
+								<Rectangle Classes="statusIndicator" IsVisible="{Binding Redirected, Mode=OneWay}" Fill="#D29922" />
+								<Rectangle Classes="statusIndicator" Fill="#2F88EB">
 									<Rectangle.IsVisible>
 										<MultiBinding Converter="{x:Static BoolConverters.Or}">
 											<Binding Path="!!DownloadCap" />

@@ -457,3 +457,32 @@ $RECYCLE.BIN/
 !.vscode/launch.json
 !.vscode/extensions.json
 NetW1reAvalonia/NetW1reAvalonia.sln.DotSettings
+
+##
+## NetW1re project-specific
+##
+
+# Inno Setup installer output and staged publish payloads
+InstallerOutput/
+Output.Windows/
+Output.Linux/
+*.iss.bak
+
+# dotnet publish output
+[Pp]ublish/
+**/[Pp]ublish/
+
+# Local app state / logs written at runtime
+*.log
+Logs/
+log/
+
+# Local runtime data overrides (empty seeds are committed; ignore local copies)
+# Uncomment if you don't want local device/rule state committed:
+# Devices.json
+# Rules.json
+
+# Environment / secrets
+*.env
+.env
+appsettings.*.local.json

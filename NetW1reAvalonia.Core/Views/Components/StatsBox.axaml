@@ -9,36 +9,24 @@
 	<Design.DataContext>
 		<viewModels:HomeViewModel />
 	</Design.DataContext>	<StackPanel Orientation="Horizontal" Spacing="16">
-		<Border Classes="label" 
-				CornerRadius="12" 
-				Padding="20,12"
-				BorderThickness="1"
-				BorderBrush="#20000000">
-			<Border.Background>
-				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-					<GradientStop Offset="0" Color="#242B3D"/>
-					<GradientStop Offset="0.5" Color="#2A3247"/>
-					<GradientStop Offset="1" Color="#303951"/>
-				</LinearGradientBrush>
-			</Border.Background>
-			<Border.BorderBrush>
-				<LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
-					<GradientStop Offset="0" Color="#4DABF7"/>
-					<GradientStop Offset="1" Color="#136999"/>
-				</LinearGradientBrush>
-			</Border.BorderBrush>
-			<Border.BorderThickness>1</Border.BorderThickness>
-			<StackPanel VerticalAlignment="Center" Orientation="Horizontal" Spacing="12"
+		<Border CornerRadius="10"
+				Padding="18,10"
+				Background="{StaticResource Nw.Brush.Surface}"
+				BorderBrush="{StaticResource Nw.Brush.Border}"
+				BorderThickness="1">
+			<StackPanel VerticalAlignment="Center" Orientation="Horizontal" Spacing="10"
 						ToolTip.Tip="Number of active devices">
-				<Ellipse Width="8" Height="8" Fill="#4DABF7"/>
-				<TextBlock Text="Devices:" 
-						   Foreground="#E2E8F0"
-						   FontSize="14"
-						   FontWeight="SemiBold"/>
-				<TextBlock Text="{Binding Devices.Count}" 
-						   Foreground="#4DABF7"
+				<Ellipse Width="8" Height="8" Fill="{StaticResource Nw.Brush.Success}"/>
+				<TextBlock Text="Devices"
+						   Foreground="{StaticResource Nw.Brush.TextSecondary}"
+						   FontSize="13"
+						   FontWeight="Medium"
+						   VerticalAlignment="Center"/>
+				<TextBlock Text="{Binding Devices.Count}"
+						   Foreground="{StaticResource Nw.Brush.TextPrimary}"
 						   FontSize="16"
-						   FontWeight="Bold"/>
+						   FontWeight="Bold"
+						   VerticalAlignment="Center"/>
 			</StackPanel>
 		</Border>
 	</StackPanel>

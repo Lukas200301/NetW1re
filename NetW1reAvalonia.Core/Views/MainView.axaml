@@ -40,15 +40,9 @@
           RowDefinitions="Auto,*">
 		
 		<Border Grid.Row="0"
-                Background="Transparent"
+                Background="{StaticResource Nw.Brush.Chrome}"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Top">
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                    <GradientStop Offset="0" Color="#1A2332"/>
-                    <GradientStop Offset="1" Color="#0F1419"/>
-                </LinearGradientBrush>
-            </Border.Background>
 			<cmpts:Navbar Name="Navbar" />
 		</Border>
 		

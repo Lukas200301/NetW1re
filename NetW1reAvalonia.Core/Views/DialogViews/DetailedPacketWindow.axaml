@@ -18,61 +18,61 @@
         <Style Selector="TextBlock.SectionHeader">
             <Setter Property="FontWeight" Value="Bold"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="Foreground" Value="#4DABF7"/>
+            <Setter Property="Foreground" Value="#4D9BF0"/>
             <Setter Property="Margin" Value="0,10,0,5"/>
         </Style>
         <Style Selector="TextBlock.Label">
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="Foreground" Value="#E6EDF3"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Margin" Value="0,2"/>
         </Style>
         <Style Selector="TextBlock.Value">
-            <Setter Property="Foreground" Value="#D1D5DB"/>
+            <Setter Property="Foreground" Value="#9FB0C3"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Margin" Value="0,2"/>
         </Style>
         <Style Selector="Border.Section">
-            <Setter Property="Background" Value="#1E293B"/>
-            <Setter Property="BorderBrush" Value="#334155"/>
+            <Setter Property="Background" Value="#1A1F2B"/>
+            <Setter Property="BorderBrush" Value="#222838"/>
             <Setter Property="BorderThickness" Value="1"/>
             <Setter Property="CornerRadius" Value="6"/>
             <Setter Property="Padding" Value="15"/>
             <Setter Property="Margin" Value="0,5"/>
         </Style>
         <Style Selector="Button.ActionButton">
-            <Setter Property="Background" Value="#374151"/>
-            <Setter Property="BorderBrush" Value="#4B5563"/>
-            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="Background" Value="#222838"/>
+            <Setter Property="BorderBrush" Value="#30394A"/>
+            <Setter Property="Foreground" Value="#E6EDF3"/>
             <Setter Property="Padding" Value="12,6"/>
             <Setter Property="CornerRadius" Value="4"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
         <Style Selector="Button.ActionButton:pointerover">
-            <Setter Property="Background" Value="#4B5563"/>
+            <Setter Property="Background" Value="#30394A"/>
         </Style>
         <Style Selector="Button.PrimaryButton">
-            <Setter Property="Background" Value="#3B82F6"/>
-            <Setter Property="BorderBrush" Value="#2563EB"/>
+            <Setter Property="Background" Value="#4D9BF0"/>
+            <Setter Property="BorderBrush" Value="#2F88EB"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Padding" Value="12,6"/>
             <Setter Property="CornerRadius" Value="4"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
         </Style>
         <Style Selector="Button.PrimaryButton:pointerover">
-            <Setter Property="Background" Value="#2563EB"/>
+            <Setter Property="Background" Value="#2F88EB"/>
         </Style>
     </Window.Styles>
 
-    <Grid Background="#0F172A">
+    <Grid Background="#12161F">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <Border Grid.Row="0" Background="#1E293B" BorderBrush="#334155" BorderThickness="0,0,0,1" Padding="20">
+        <Border Grid.Row="0" Background="#1A1F2B" BorderBrush="#222838" BorderThickness="0,0,0,1" Padding="20">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -82,16 +82,16 @@
                 <StackPanel Grid.Column="0" Orientation="Horizontal" Spacing="10">
                     <TextBlock Text="📦" FontSize="24" VerticalAlignment="Center"/>
                     <TextBlock Text="Detailed Packet Analysis" FontSize="20" FontWeight="Bold" 
-                               Foreground="#E2E8F0" VerticalAlignment="Center"/>
-                    <Border Background="#1E40AF" CornerRadius="4" Padding="8,4" 
+                               Foreground="#E6EDF3" VerticalAlignment="Center"/>
+                    <Border Background="#175AAE" CornerRadius="4" Padding="8,4" 
                             IsVisible="{Binding PacketInfo, Converter={x:Static ObjectConverters.IsNotNull}}">
                         <TextBlock Text="{Binding PacketInfo.Protocol}" FontSize="12" 
-                                   Foreground="#4DABF7" FontWeight="SemiBold"/>
+                                   Foreground="#4D9BF0" FontWeight="SemiBold"/>
                     </Border>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="10">
-                    <Border Background="#059669" CornerRadius="4" Padding="6,3"
+                    <Border Background="#3FB950" CornerRadius="4" Padding="6,3"
                             IsVisible="{Binding IsResolvingHostnames}">
                         <StackPanel Orientation="Horizontal" Spacing="5">
                             <TextBlock Text="🔄" FontSize="10" VerticalAlignment="Center"/>
@@ -497,12 +497,12 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Spacing="10">
                             <TextBlock Text="📦 Payload Data" Classes="SectionHeader"/>
-                            <TextBlock Text="{Binding PayloadSizeText}" Foreground="#9CA3AF" FontSize="12" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding PayloadSizeText}" Foreground="#9FB0C3" FontSize="12" VerticalAlignment="Center"/>
                         </StackPanel>
 
                         <TextBox Text="{Binding PacketInfo.PayloadText}" IsReadOnly="True" 
                                  Height="200" FontFamily="Consolas" FontSize="11"
-                                 Background="#111827" Foreground="#E5E7EB" BorderBrush="#374151"
+                                 Background="#0B0E14" Foreground="#E6EDF3" BorderBrush="#222838"
                                  AcceptsReturn="True" TextWrapping="Wrap"
                                  ScrollViewer.VerticalScrollBarVisibility="Auto"/>
                     </StackPanel>
@@ -512,12 +512,12 @@
                     <StackPanel>
                         <StackPanel Orientation="Horizontal" Spacing="10">
                             <TextBlock Text="🔢 Hex Dump" Classes="SectionHeader"/>
-                            <TextBlock Text="{Binding RawDataSizeText}" Foreground="#9CA3AF" FontSize="12" VerticalAlignment="Center"/>
+                            <TextBlock Text="{Binding RawDataSizeText}" Foreground="#9FB0C3" FontSize="12" VerticalAlignment="Center"/>
                         </StackPanel>
 
                         <TextBox Text="{Binding PacketInfo.HexDump}" IsReadOnly="True" 
                                  Height="300" FontFamily="Consolas" FontSize="10"
-                                 Background="#111827" Foreground="#E5E7EB" BorderBrush="#374151"
+                                 Background="#0B0E14" Foreground="#E6EDF3" BorderBrush="#222838"
                                  AcceptsReturn="True" TextWrapping="NoWrap"
                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
                                  ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
@@ -527,7 +527,7 @@
             </StackPanel>
         </ScrollViewer>
 
-        <Border Grid.Row="2" Background="#1E293B" BorderBrush="#334155" BorderThickness="0,1,0,0" Padding="20">
+        <Border Grid.Row="2" Background="#1A1F2B" BorderBrush="#222838" BorderThickness="0,1,0,0" Padding="20">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>

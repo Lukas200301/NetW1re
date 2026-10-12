@@ -8,17 +8,17 @@
 		<Style Selector="TextBlock">
 			<Setter Property="FontSize" Value="32"/>
 			<Setter Property="FontWeight" Value="Bold"/>
-			<Setter Property="Foreground" Value="#136999"/>
+			<Setter Property="Foreground" Value="#2F88EB"/>
 		</Style>
 	</UserControl.Styles>
 
 	<Border Padding="24" 
 			HorizontalAlignment="Center"
 			VerticalAlignment="Center"
-			BorderBrush="#136999"
+			BorderBrush="#2F88EB"
 			BorderThickness="3"
 			CornerRadius="12"
-			Background="#10136999">
+			Background="#1A2F88EB">
 		<TextBlock Text="Coming Soon"/>
 	</Border>
 </UserControl>

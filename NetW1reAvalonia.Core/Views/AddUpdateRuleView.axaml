@@ -22,8 +22,8 @@
 		</Style>
 	</Window.Styles>
 	<Grid RowDefinitions="Auto,*">
-		<components:PageTitle Grid.Row="0" VerticalAlignment="Stretch" Text="{Binding $parent[Window].Title}" />		<Border Grid.Row="1" Padding="20" Background="#0F1419">
-			<Border Background="#1E293B" 
+		<components:PageTitle Grid.Row="0" VerticalAlignment="Stretch" Text="{Binding $parent[Window].Title}" />		<Border Grid.Row="1" Padding="20" Background="#0B0E14">
+			<Border Background="#1A1F2B" 
 			        CornerRadius="16" 
 			        Padding="24"
 			        BorderThickness="1"
@@ -33,13 +33,13 @@
 						<Grid ColumnDefinitions="5*,Auto">							<StackPanel Orientation="Vertical" Spacing="8">
 								<Label Margin="0,0,0,8" 
 								       FontWeight="SemiBold" 
-								       Foreground="#F8FAFC">Target</Label>								<TextBox HorizontalAlignment="Stretch"
+								       Foreground="#E6EDF3">Target</Label>								<TextBox HorizontalAlignment="Stretch"
 								         Watermark="Can be: ip address, mac address, regex pattern, name, vendor"
 								         Text="{Binding AddUpdateRuleModel.Target, Mode=TwoWay}"
 								         CornerRadius="8"
 								         Padding="12"
-								         Background="#334155"
-								         BorderBrush="#64748B"
+								         Background="#222838"
+								         BorderBrush="#6B7A8D"
 								         BorderThickness="1"/>
 							</StackPanel>
 							<CheckBox Grid.Column="1"
@@ -47,40 +47,40 @@
 							          VerticalAlignment="Bottom"							          Content="Regex"
 							          Margin="16,0,0,0"
 							          IsChecked="{Binding AddUpdateRuleModel.IsRegex, Mode=TwoWay}"
-							          Foreground="#F8FAFC"/>
+							          Foreground="#E6EDF3"/>
 						</Grid>						<Grid ColumnDefinitions="*,*">
 							<StackPanel Grid.Column="0" Orientation="Vertical" Spacing="8" Margin="0,0,8,0">								<Label Margin="0,0,0,8" 
 								       FontWeight="SemiBold" 
-								       Foreground="#F8FAFC">Action</Label>								<ComboBox ItemsSource="{Binding RuleActions}"
+								       Foreground="#E6EDF3">Action</Label>								<ComboBox ItemsSource="{Binding RuleActions}"
 								          SelectedItem="{Binding AddUpdateRuleModel.Action, Mode=TwoWay, Converter={x:Static convos:EnumToStringConverter.Instance},ConverterParameter=Action}"
 								          IsEnabled="{Binding !IsUpdate}"
 								          HorizontalAlignment="Stretch"
 								          PlaceholderText="Choose an action"
 								          CornerRadius="8"
 								          Padding="12"
-								          Background="#334155"
-								          BorderBrush="#64748B"
+								          Background="#222838"
+								          BorderBrush="#6B7A8D"
 								          BorderThickness="1">
 									<ComboBox.ItemTemplate>
 										<DataTemplate>
-											<TextBlock Text="{Binding}" Foreground="#F8FAFC"/>
+											<TextBlock Text="{Binding}" Foreground="#E6EDF3"/>
 										</DataTemplate>
 									</ComboBox.ItemTemplate></ComboBox>
 							</StackPanel>
 							<StackPanel Grid.Column="1" Orientation="Vertical" Spacing="8" Margin="8,0,0,0">								<Label Margin="0,0,0,8"
 								       FontWeight="SemiBold" 
-								       Foreground="#F8FAFC">Source</Label>								<ComboBox ItemsSource="{Binding RuleSourceValues}"
+								       Foreground="#E6EDF3">Source</Label>								<ComboBox ItemsSource="{Binding RuleSourceValues}"
 								          SelectedItem="{Binding AddUpdateRuleModel.SourceValue, Mode=TwoWay, Converter={x:Static convos:EnumToStringConverter.Instance},ConverterParameter=Source}"
 								          HorizontalAlignment="Stretch"
 								          PlaceholderText="Choose a source value"
 								          CornerRadius="8"
 								          Padding="12"
-								          Background="#334155"
-								          BorderBrush="#64748B"
+								          Background="#222838"
+								          BorderBrush="#6B7A8D"
 								          BorderThickness="1">
 									<ComboBox.ItemTemplate>
 										<DataTemplate>
-											<TextBlock Text="{Binding}" Foreground="#F8FAFC"/>
+											<TextBlock Text="{Binding}" Foreground="#E6EDF3"/>
 										</DataTemplate>
 									</ComboBox.ItemTemplate>
 								</ComboBox>
@@ -88,24 +88,24 @@
 						</Grid>						<Grid ColumnDefinitions="*,*" IsVisible="{Binding IsLimitRule}">
 							<StackPanel Grid.Column="0" Orientation="Vertical" Spacing="8" Margin="0,0,8,0">								<Label Margin="0,0,0,8" 
 								       FontWeight="SemiBold" 
-								       Foreground="#F8FAFC">Upload</Label>								<NumericUpDown Value="{Binding AddUpdateRuleModel.Upload, Mode=TwoWay}"
+								       Foreground="#E6EDF3">Upload</Label>								<NumericUpDown Value="{Binding AddUpdateRuleModel.Upload, Mode=TwoWay}"
 								               CornerRadius="8"
 								               Padding="12"
-								               Background="#334155"
-								               BorderBrush="#64748B"
+								               Background="#222838"
+								               BorderBrush="#6B7A8D"
 								               BorderThickness="1"/></StackPanel>
 							<StackPanel Grid.Column="1" Orientation="Vertical" Spacing="8" Margin="8,0,0,0">								<Label Margin="0,0,0,8"
 								       FontWeight="SemiBold" 
-								       Foreground="#F8FAFC">Download</Label>								<NumericUpDown Value="{Binding AddUpdateRuleModel.Download, Mode=TwoWay}"
+								       Foreground="#E6EDF3">Download</Label>								<NumericUpDown Value="{Binding AddUpdateRuleModel.Download, Mode=TwoWay}"
 								               CornerRadius="8"
 								               Padding="12"
-								               Background="#334155"
-								               BorderBrush="#64748B"
+								               Background="#222838"
+								               BorderBrush="#6B7A8D"
 								               BorderThickness="1"/>
 							</StackPanel>
 						</Grid>						<CheckBox Content="Active" 
 						          IsChecked="{Binding AddUpdateRuleModel.Active, Mode=TwoWay}"
-						          Foreground="#F8FAFC"
+						          Foreground="#E6EDF3"
 						          Margin="0,8,0,0"/>
 					</StackPanel>
 					<StackPanel Grid.Row="1" 
@@ -113,7 +113,7 @@
 					            VerticalAlignment="Bottom"
 					            Margin="0,24,0,0">						<Button Padding="40,12"
 						        Command="{Binding Accept}"
-						        Background="#136999"
+						        Background="#2F88EB"
 						        Foreground="White"
 						        CornerRadius="8"
 						        FontWeight="SemiBold">

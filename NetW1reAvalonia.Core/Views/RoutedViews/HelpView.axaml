@@ -18,7 +18,7 @@
 		<Style Selector="TextBlock.title">
 			<Setter Property="FontSize" Value="24"/>
 			<Setter Property="FontWeight" Value="Bold"/>
-			<Setter Property="Foreground" Value="#136999"/>
+			<Setter Property="Foreground" Value="#2F88EB"/>
 			<Setter Property="Margin" Value="0,0,0,20"/>
 		</Style>		<Style Selector="StackPanel.infoPanel">
 			<Setter Property="Orientation" Value="Horizontal"/>
@@ -58,19 +58,19 @@
 					<TextBlock Text="Status Indicators" Classes="title"/>
 					<Border Classes="infoPanelWrapper">
 						<StackPanel Classes="infoPanel">
-							<Border Classes="rowStatus indicator" Background="Red"></Border>
+							<Border Classes="rowStatus indicator" Background="#F85149"></Border>
 							<TextBlock Classes="labelValue" Text="Blocked - Device cannot access the internet"/>
 						</StackPanel>
 					</Border>
 					<Border Classes="infoPanelWrapper">
 						<StackPanel Classes="infoPanel">
-							<Border Classes="rowStatus indicator" Background="Yellow"></Border>
+							<Border Classes="rowStatus indicator" Background="#D29922"></Border>
 							<TextBlock Classes="labelValue" Text="Redirected - Device traffic is being redirected"/>
 						</StackPanel>
 					</Border>
 					<Border Classes="infoPanelWrapper">
 						<StackPanel Classes="infoPanel">
-							<Border Classes="rowStatus indicator" Background="Blue"></Border>
+							<Border Classes="rowStatus indicator" Background="#2F88EB"></Border>
 							<TextBlock Classes="labelValue" Text="Limited - Device has bandwidth restrictions"/>
 						</StackPanel>
 					</Border>

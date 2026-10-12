@@ -10,6 +10,66 @@
 
 	<Application.Resources>
 		<helpers:ConventionalViewLocator x:Key="ViewLocator"/>
+
+		<!-- ============================================================
+		     Flat modern dark palette. Single source of truth for colors.
+		     Reference as {StaticResource Nw.Brush.Xxx} in views/styles.
+		     ============================================================ -->
+
+		<!-- Surfaces -->
+		<Color x:Key="Nw.Color.Background">#0B0E14</Color>
+		<Color x:Key="Nw.Color.Surface">#12161F</Color>
+		<Color x:Key="Nw.Color.SurfaceElevated">#1A1F2B</Color>
+		<Color x:Key="Nw.Color.SurfaceHover">#222838</Color>
+		<Color x:Key="Nw.Color.Chrome">#10141D</Color>
+
+		<!-- Borders -->
+		<Color x:Key="Nw.Color.Border">#232A38</Color>
+		<Color x:Key="Nw.Color.BorderStrong">#30394A</Color>
+
+		<!-- Accent (refined blue) -->
+		<Color x:Key="Nw.Color.Accent">#2F88EB</Color>
+		<Color x:Key="Nw.Color.AccentLight">#4D9BF0</Color>
+		<Color x:Key="Nw.Color.AccentDark">#1F6FD0</Color>
+		<Color x:Key="Nw.Color.AccentSubtle">#15233A</Color>
+
+		<!-- Text -->
+		<Color x:Key="Nw.Color.TextPrimary">#E6EDF3</Color>
+		<Color x:Key="Nw.Color.TextSecondary">#9FB0C3</Color>
+		<Color x:Key="Nw.Color.TextMuted">#6B7A8D</Color>
+
+		<!-- Status -->
+		<Color x:Key="Nw.Color.Success">#3FB950</Color>
+		<Color x:Key="Nw.Color.Warning">#D29922</Color>
+		<Color x:Key="Nw.Color.Error">#F85149</Color>
+
+		<!-- Brushes -->
+		<SolidColorBrush x:Key="Nw.Brush.Background" Color="{StaticResource Nw.Color.Background}" />
+		<SolidColorBrush x:Key="Nw.Brush.Surface" Color="{StaticResource Nw.Color.Surface}" />
+		<SolidColorBrush x:Key="Nw.Brush.SurfaceElevated" Color="{StaticResource Nw.Color.SurfaceElevated}" />
+		<SolidColorBrush x:Key="Nw.Brush.SurfaceHover" Color="{StaticResource Nw.Color.SurfaceHover}" />
+		<SolidColorBrush x:Key="Nw.Brush.Chrome" Color="{StaticResource Nw.Color.Chrome}" />
+		<SolidColorBrush x:Key="Nw.Brush.Border" Color="{StaticResource Nw.Color.Border}" />
+		<SolidColorBrush x:Key="Nw.Brush.BorderStrong" Color="{StaticResource Nw.Color.BorderStrong}" />
+		<SolidColorBrush x:Key="Nw.Brush.Accent" Color="{StaticResource Nw.Color.Accent}" />
+		<SolidColorBrush x:Key="Nw.Brush.AccentLight" Color="{StaticResource Nw.Color.AccentLight}" />
+		<SolidColorBrush x:Key="Nw.Brush.AccentDark" Color="{StaticResource Nw.Color.AccentDark}" />
+		<SolidColorBrush x:Key="Nw.Brush.AccentSubtle" Color="{StaticResource Nw.Color.AccentSubtle}" />
+		<SolidColorBrush x:Key="Nw.Brush.TextPrimary" Color="{StaticResource Nw.Color.TextPrimary}" />
+		<SolidColorBrush x:Key="Nw.Brush.TextSecondary" Color="{StaticResource Nw.Color.TextSecondary}" />
+		<SolidColorBrush x:Key="Nw.Brush.TextMuted" Color="{StaticResource Nw.Color.TextMuted}" />
+		<SolidColorBrush x:Key="Nw.Brush.Success" Color="{StaticResource Nw.Color.Success}" />
+		<SolidColorBrush x:Key="Nw.Brush.Warning" Color="{StaticResource Nw.Color.Warning}" />
+		<SolidColorBrush x:Key="Nw.Brush.Error" Color="{StaticResource Nw.Color.Error}" />
+
+		<!-- Retarget FluentTheme's built-in accent to our blue -->
+		<Color x:Key="SystemAccentColor">#2F88EB</Color>
+		<Color x:Key="SystemAccentColorDark1">#2F88EB</Color>
+		<Color x:Key="SystemAccentColorDark2">#1F6FD0</Color>
+		<Color x:Key="SystemAccentColorDark3">#175AAE</Color>
+		<Color x:Key="SystemAccentColorLight1">#4D9BF0</Color>
+		<Color x:Key="SystemAccentColorLight2">#6FB0F4</Color>
+		<Color x:Key="SystemAccentColorLight3">#8FC2F7</Color>
 	</Application.Resources>
 
 	<Application.Styles>

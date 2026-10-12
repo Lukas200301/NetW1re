@@ -15,7 +15,7 @@
 		<vm:RuleBuilderViewModel />
 	</Design.DataContext>	<UserControl.Styles>
 		<Style Selector="TextBlock">
-			<Setter Property="Foreground" Value="#E8F4FD"/>
+			<Setter Property="Foreground" Value="#E6EDF3"/>
 		</Style>
 		<Style Selector="Border.ruleItem">
 			<Setter Property="CornerRadius" Value="8"/>
@@ -32,12 +32,12 @@
 			<Setter Property="Fill" Value="#ffd93d"/>
 		</Style>
 		<Style Selector="Border.ruleItem_Limit > DockPanel > Rectangle">
-			<Setter Property="Fill" Value="#136999"/>
+			<Setter Property="Fill" Value="#2F88EB"/>
 		</Style>
 		<Style Selector="Border.ruleItem_Attribute">
 			<Setter Property="Padding" Value="8,4"/>
 			<Setter Property="CornerRadius" Value="6"/>
-			<Setter Property="Background" Value="#136999"/>
+			<Setter Property="Background" Value="#2F88EB"/>
 			<Setter Property="HorizontalAlignment" Value="Left"/>
 			<Setter Property="VerticalAlignment" Value="Center"/>
 			<Setter Property="Margin" Value="0,0,8,0"/>
@@ -62,16 +62,16 @@
 			<Setter Property="HorizontalAlignment" Value="Right"/>
 		</Style>
 		<Style Selector="cmpts|GenericIconButton.control_Add:pointerover">
-			<Setter Property="Background" Value="#28a745"/>
+			<Setter Property="Background" Value="#3FB950"/>
 		</Style>
 		<Style Selector="cmpts|GenericIconButton.control_Edit:pointerover">
 			<Setter Property="Background" Value="#fd7e14"/>
 		</Style>
 		<Style Selector="cmpts|GenericIconButton.control_Remove:pointerover">
-			<Setter Property="Background" Value="#dc3545"/>
+			<Setter Property="Background" Value="#F85149"/>
 		</Style>
 		<Style Selector="cmpts|GenericIconButton.control_Move:pointerover">
-			<Setter Property="Background" Value="#136999"/>
+			<Setter Property="Background" Value="#2F88EB"/>
 		</Style>
 	</UserControl.Styles>
 
@@ -94,10 +94,10 @@
 						<Setter Property="Padding" Value="0"/>
 						<Setter Property="Margin" Value="0,0,0,4"/>
 					</Style>					<Style Selector="ListBoxItem:focus /template/ ContentPresenter">
-						<Setter Property="Background" Value="#136999"/>
+						<Setter Property="Background" Value="#2F88EB"/>
 					</Style>
 					<Style Selector="ListBoxItem[IsFocused=False][IsSelected=True] /template/ ContentPresenter">
-						<Setter Property="Background" Value="#136999"/>
+						<Setter Property="Background" Value="#2F88EB"/>
 					</Style>
 				</ListBox.Styles>
 				<ListBox.ItemTemplate>
@@ -217,7 +217,7 @@
 					</cmpts:GenericIconButton><Border Grid.Column="0" Grid.Row="6"
 							CornerRadius="8"
 							Padding="12"
-							BorderBrush="#136999"
+							BorderBrush="#2F88EB"
 							BorderThickness="2"
 							Background="#10136999"
 							VerticalAlignment="Bottom">

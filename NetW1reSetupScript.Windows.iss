@@ -1,5 +1,5 @@
 #define MyAppName "NetW1re"
-#define MyAppVersion "1.0.0"
+#define MyAppVersion "1.0.1.0"
 #define MyAppPublisher "Lukas"
 #define MyAppURL "https://github.com/lukas200301/NetW1re"
 #define MyAppExeName "NetW1re.exe"

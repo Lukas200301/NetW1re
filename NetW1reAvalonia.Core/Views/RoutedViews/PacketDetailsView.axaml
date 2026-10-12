@@ -9,11 +9,11 @@
     <UserControl.Styles>
         <Style Selector="TextBlock.Label">
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="Foreground" Value="#E2E8F0"/>
+            <Setter Property="Foreground" Value="#E6EDF3"/>
             <Setter Property="FontSize" Value="12"/>
         </Style>
         <Style Selector="TextBlock.Value">
-            <Setter Property="Foreground" Value="#D1D5DB"/>
+            <Setter Property="Foreground" Value="#9FB0C3"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="12"/>
         </Style>
@@ -23,34 +23,30 @@
             <Setter Property="Margin" Value="0,0,0,8"/>
         </Style>
         <Style Selector="TextBlock.AppData">
-            <Setter Property="Foreground" Value="#00FF00"/>
+            <Setter Property="Foreground" Value="#3FB950"/>
             <Setter Property="FontFamily" Value="Consolas"/>
             <Setter Property="FontSize" Value="11"/>
             <Setter Property="Background" Value="Transparent"/>
         </Style>
         <Style Selector="TabItem">
-            <Setter Property="Background">
-                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                    <GradientStop Color="#4A5568" Offset="0"/>
-                    <GradientStop Color="#2D3748" Offset="1"/>
-                </LinearGradientBrush>
-            </Setter>
-            <Setter Property="Foreground" Value="#E2E8F0"/>
-            <Setter Property="Padding" Value="20,12"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#9FB0C3"/>
+            <Setter Property="Padding" Value="18,10"/>
             <Setter Property="Margin" Value="0,0,4,0"/>
-            <Setter Property="CornerRadius" Value="8,8,0,0"/>
+            <Setter Property="CornerRadius" Value="8"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontWeight" Value="SemiBold"/>
-            <Setter Property="MinHeight" Value="42"/>
-            <Setter Property="MinWidth" Value="120"/>
-            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="MinHeight" Value="40"/>
+            <Setter Property="MinWidth" Value="110"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
             <Setter Property="Template">
                 <ControlTemplate>
                     <Border Background="{TemplateBinding Background}"
                             CornerRadius="{TemplateBinding CornerRadius}"
                             Padding="{TemplateBinding Padding}"
-                            BorderThickness="0"
-                            BoxShadow="0 2 8 rgba(0,0,0,0.1)">
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            BorderBrush="{TemplateBinding BorderBrush}">
                         <ContentPresenter Content="{TemplateBinding Header}"
                                           HorizontalAlignment="Center"
                                           VerticalAlignment="Center"/>
@@ -59,23 +55,14 @@
             </Setter>
         </Style>
         <Style Selector="TabItem:selected">
-            <Setter Property="Background">
-                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                    <GradientStop Color="#2563EB" Offset="0"/>
-                    <GradientStop Color="#1D4ED8" Offset="1"/>
-                </LinearGradientBrush>
-            </Setter>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#15233A"/>
+            <Setter Property="BorderBrush" Value="#2F88EB"/>
+            <Setter Property="Foreground" Value="#8FC2F7"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style Selector="TabItem:pointerover:not(:selected)">
-            <Setter Property="Background">
-                <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
-                    <GradientStop Color="#5A67D8" Offset="0"/>
-                    <GradientStop Color="#4C51BF" Offset="1"/>
-                </LinearGradientBrush>
-            </Setter>
-            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#222838"/>
+            <Setter Property="Foreground" Value="#E6EDF3"/>
         </Style>
         <Style Selector="TabControl">
             <Setter Property="BorderThickness" Value="0"/>
@@ -83,23 +70,23 @@
         </Style>
     </UserControl.Styles>
     
-    <Grid Background="#1E293B">
-        <Border Background="#0F172A" Padding="12,8" VerticalAlignment="Top" Height="40">
+    <Grid Background="#1A1F2B">
+        <Border Background="#12161F" Padding="12,8" VerticalAlignment="Top" Height="40">
             <TextBlock Text="{Binding PacketInfo.Protocol, StringFormat='Protocol: {0}'}" 
-                       FontSize="14" FontWeight="SemiBold" Foreground="#F1F5F9"/>
+                       FontSize="14" FontWeight="SemiBold" Foreground="#E6EDF3"/>
         </Border>
         
         <TabControl Margin="0,40,0,0" Background="Transparent" BorderThickness="0">
             
             <TabItem Header="Overview">
-                <ScrollViewer Padding="16" Background="#374151" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer Padding="16" Background="#222838" VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="18">
                         
                         <StackPanel Spacing="10">
-                            <TextBlock Text="Summary" Classes="SectionHeader" Foreground="#F59E0B"/>
-                            <Border Background="#1F2937" CornerRadius="6" Padding="14">
+                            <TextBlock Text="Summary" Classes="SectionHeader" Foreground="#D29922"/>
+                            <Border Background="#1A1F2B" CornerRadius="6" Padding="14">
                                 <TextBlock Text="{Binding PacketInfo.PacketSummary}" 
-                                           Foreground="#D1D5DB" FontFamily="Consolas" FontSize="11"
+                                           Foreground="#9FB0C3" FontFamily="Consolas" FontSize="11"
                                            TextWrapping="Wrap"/>
                             </Border>
                         </StackPanel>
@@ -175,16 +162,16 @@
                         <StackPanel Spacing="10">
                             <TextBlock Text="Status" Classes="SectionHeader" Foreground="#8B5CF6"/>
                             <StackPanel Orientation="Horizontal" Spacing="8">
-                                <Border Background="#DC2626" CornerRadius="12" Padding="10,6"
+                                <Border Background="#F85149" CornerRadius="12" Padding="10,6"
                                         IsVisible="{Binding PacketInfo.IsSuspicious}">
                                     <TextBlock Text="🚨 Suspicious" Foreground="White" FontSize="11" FontWeight="Bold"/>
                                 </Border>                                
-                                <Border Background="#059669" CornerRadius="12" Padding="10,6"
+                                <Border Background="#3FB950" CornerRadius="12" Padding="10,6"
                                         IsVisible="{Binding PacketInfo.IsEncrypted}">
                                     <TextBlock Text="🔒 Encrypted" Foreground="White" FontSize="11" FontWeight="Bold"/>
                                 </Border>
 
-                                <Border Background="#F59E0B" CornerRadius="12" Padding="10,6"
+                                <Border Background="#D29922" CornerRadius="12" Padding="10,6"
                                         IsVisible="{Binding PacketInfo.HasPayload}">
                                     <TextBlock Text="📦 Has Payload" Foreground="White" FontSize="11" FontWeight="Bold"/>
                                 </Border>
@@ -199,7 +186,7 @@
             </TabItem>
 
             <TabItem Header="Network">
-                <ScrollViewer Padding="16" Background="#374151" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer Padding="16" Background="#222838" VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="18">
                         
                         <StackPanel Spacing="10">
@@ -265,7 +252,7 @@
                         </StackPanel>
 
                         <StackPanel Spacing="10" IsVisible="{Binding IsArp}">
-                            <TextBlock Text="ARP Information" Classes="SectionHeader" Foreground="#F59E0B"/>
+                            <TextBlock Text="ARP Information" Classes="SectionHeader" Foreground="#D29922"/>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -334,7 +321,7 @@
             </TabItem>
 
             <TabItem Header="Transport">
-                <ScrollViewer Padding="16" Background="#374151" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer Padding="16" Background="#222838" VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="18">
                         
                         <StackPanel Spacing="10" IsVisible="{Binding IsTcp}">
@@ -400,7 +387,7 @@
                         </StackPanel>
 
                         <StackPanel Spacing="10" IsVisible="{Binding IsUdp}">
-                            <TextBlock Text="UDP Information" Classes="SectionHeader" Foreground="#3B82F6"/>
+                            <TextBlock Text="UDP Information" Classes="SectionHeader" Foreground="#4D9BF0"/>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -435,11 +422,11 @@
             </TabItem>
 
             <TabItem Header="Application">
-                <ScrollViewer Padding="16" Background="#374151" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer Padding="16" Background="#222838" VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="18">
                         
                         <StackPanel Spacing="10" IsVisible="{Binding HasHttpData}">
-                            <TextBlock Text="HTTP Information" Classes="SectionHeader" Foreground="#F59E0B"/>
+                            <TextBlock Text="HTTP Information" Classes="SectionHeader" Foreground="#D29922"/>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -505,7 +492,7 @@
                         </StackPanel>
 
                         <StackPanel Spacing="10" IsVisible="{Binding HasTlsData}">
-                            <TextBlock Text="TLS Information" Classes="SectionHeader" Foreground="#059669"/>
+                            <TextBlock Text="TLS Information" Classes="SectionHeader" Foreground="#3FB950"/>
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -530,14 +517,14 @@
 
                         <StackPanel Spacing="10" IsVisible="{Binding HasApplicationData}">
                             <StackPanel Orientation="Horizontal" Spacing="12">
-                                <TextBlock Text="Application Data" Classes="SectionHeader" Foreground="#F59E0B"/>
+                                <TextBlock Text="Application Data" Classes="SectionHeader" Foreground="#D29922"/>
                                 <Button Content="Copy" 
-                                        Background="#F59E0B" BorderBrush="#D97706" Foreground="White"
+                                        Background="#D29922" BorderBrush="#D97706" Foreground="White"
                                         Padding="8,4" CornerRadius="4" FontSize="11"
                                         Command="{Binding CopyApplicationDataCommand}"
                                         ToolTip.Tip="Copy application data to clipboard"/>
                             </StackPanel>
-                            <Border Background="#0A0A0A" CornerRadius="6" Padding="14" BorderBrush="#333" BorderThickness="1">
+                            <Border Background="#0B0E14" CornerRadius="6" Padding="14" BorderBrush="#232A38" BorderThickness="1">
                                 <ScrollViewer MaxHeight="350" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                     <TextBlock Text="{Binding PacketInfo.ApplicationData}" 
                                                Classes="AppData"
@@ -555,10 +542,10 @@
                                         Command="{Binding CopyPayloadPreviewCommand}"
                                         ToolTip.Tip="Copy payload preview to clipboard"/>
                             </StackPanel>
-                            <Border Background="#1F2937" CornerRadius="6" Padding="14">
+                            <Border Background="#1A1F2B" CornerRadius="6" Padding="14">
                                 <ScrollViewer MaxHeight="200" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                     <TextBlock Text="{Binding PacketInfo.PayloadPreview}" 
-                                               Foreground="#D1D5DB" FontFamily="Consolas" FontSize="11"
+                                               Foreground="#9FB0C3" FontFamily="Consolas" FontSize="11"
                                                TextWrapping="NoWrap"/>
                                 </ScrollViewer>
                             </Border>
@@ -568,7 +555,7 @@
             </TabItem>
 
             <TabItem Header="Raw Data">
-                <ScrollViewer Padding="16" Background="#374151" VerticalScrollBarVisibility="Auto">
+                <ScrollViewer Padding="16" Background="#222838" VerticalScrollBarVisibility="Auto">
                     <StackPanel Spacing="18">
                         
                         <StackPanel Spacing="10">
@@ -579,10 +566,10 @@
                                         Padding="8,4" CornerRadius="4" FontSize="11"
                                         Command="{Binding CopyHexDumpCommand}"
                                         ToolTip.Tip="Copy hex dump to clipboard"/>
-                            </StackPanel>                            <Border Background="#0F172A" CornerRadius="6" Padding="14" Margin="0,0,0,60">
+                            </StackPanel>                            <Border Background="#12161F" CornerRadius="6" Padding="14" Margin="0,0,0,60">
                                 <ScrollViewer MaxHeight="450" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                     <TextBlock Text="{Binding PacketInfo.HexDump}" 
-                                               Foreground="#D1D5DB" FontFamily="Consolas" FontSize="10"
+                                               Foreground="#9FB0C3" FontFamily="Consolas" FontSize="10"
                                                TextWrapping="NoWrap"/>
                                 </ScrollViewer>
                             </Border>
@@ -596,10 +583,10 @@
                                         Command="{Binding CopyPayloadTextCommand}"
                                         ToolTip.Tip="Copy payload text to clipboard"/>
                             </StackPanel>
-                            <Border Background="#0F172A" CornerRadius="6" Padding="14">
+                            <Border Background="#12161F" CornerRadius="6" Padding="14">
                                 <ScrollViewer MaxHeight="350" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                                     <TextBlock Text="{Binding PacketInfo.PayloadText}" 
-                                               Foreground="#D1D5DB" FontFamily="Consolas" FontSize="11"
+                                               Foreground="#9FB0C3" FontFamily="Consolas" FontSize="11"
                                                TextWrapping="NoWrap"/>
                                 </ScrollViewer>
                             </Border>

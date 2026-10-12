@@ -4,18 +4,19 @@
 			 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 			 x:Class="NetW1reAvalonia.Core.Views.Components.LinkButton">	<UserControl.Styles>	
-		<Style Selector="Button">
-			<Setter Property="BorderThickness" Value="0,0,0,2"/>
-			<Setter Property="BorderBrush" Value="#136999"/>
-			<Setter Property="Padding" Value="8,6"/>
-			<Setter Property="CornerRadius" Value="4"/>
+		<Style Selector="Button.link">
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Padding" Value="6,4"/>
+			<Setter Property="CornerRadius" Value="6"/>
 			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="Cursor" Value="Hand"/>
 		</Style>
-		<Style Selector="Button.link:pointerover">
-			<Setter Property="Background" Value="#20136999"/>
+		<Style Selector="Button.link:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="#15233A"/>
 		</Style>
-		<Style Selector="Button.link:pressed">
-			<Setter Property="Background" Value="#136999"/>
+		<Style Selector="Button.link:pressed /template/ ContentPresenter#PART_ContentPresenter">
+			<Setter Property="Background" Value="#1A2B45"/>
 		</Style>
 	</UserControl.Styles>
 	<Button Classes="link"
@@ -23,7 +24,7 @@
 			Command="{Binding $parent.OnClicked}"
 			CommandParameter="{Binding $parent.Link}"
 			Background="Transparent"
-			Foreground="#136999"></Button>
+			Foreground="#4D9BF0"></Button>
 </UserControl>
 
 

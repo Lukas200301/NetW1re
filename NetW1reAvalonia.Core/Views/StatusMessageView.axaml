@@ -20,13 +20,13 @@
             <Setter Property="Padding" Value="24,10" />
             <Setter Property="CornerRadius" Value="6" />
             <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="Background" Value="#136999" />
+            <Setter Property="Background" Value="#2F88EB" />
             <Setter Property="Foreground" Value="White" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="FontSize" Value="14" />
         </Style>
         <Style Selector="Button:pointerover">
-            <Setter Property="Background" Value="#1a7bb3" />
+            <Setter Property="Background" Value="#1F6FD0" />
         </Style>
         <Style Selector="TextBlock">
             <Setter Property="FontSize" Value="16" />

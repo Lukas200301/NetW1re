@@ -19,17 +19,17 @@
 		<StackPanel Grid.Column="0" Spacing="25" VerticalAlignment="Center" Margin="20">
 			
 			<StackPanel Spacing="10">
-				<TextBlock Text="🧑‍💻 Developed By" FontWeight="Bold" Foreground="#4DABF7" FontSize="18"/>
-				<TextBlock Text="Lukas" Foreground="#E2E8F0" FontSize="16" Margin="20,0,0,0"/>
+				<TextBlock Text="🧑‍💻 Developed By" FontWeight="Bold" Foreground="#4D9BF0" FontSize="18"/>
+				<TextBlock Text="Lukas" Foreground="#E6EDF3" FontSize="16" Margin="20,0,0,0"/>
 			</StackPanel>
 
 			<StackPanel Spacing="10">
-				<TextBlock Text="📦 Version" FontWeight="Bold" Foreground="#4DABF7" FontSize="18"/>
-				<TextBlock Text="{Binding AppVersion}" Foreground="#E2E8F0" FontSize="16" Margin="20,0,0,0"/>
+				<TextBlock Text="📦 Version" FontWeight="Bold" Foreground="#4D9BF0" FontSize="18"/>
+				<TextBlock Text="{Binding AppVersion}" Foreground="#E6EDF3" FontSize="16" Margin="20,0,0,0"/>
 			</StackPanel>
 
 			<StackPanel Spacing="10">
-				<TextBlock Text="🔗 Source Code" FontWeight="Bold" Foreground="#4DABF7" FontSize="18"/>
+				<TextBlock Text="🔗 Source Code" FontWeight="Bold" Foreground="#4D9BF0" FontSize="18"/>
 				<cmpts:LinkButton Text="View on GitHub" Link="https://github.com/Lukas200301" 
 								  Margin="20,0,0,0"/>
 			</StackPanel>
